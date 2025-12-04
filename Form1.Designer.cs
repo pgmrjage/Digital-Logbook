@@ -37,7 +37,7 @@
             // 
             // txtbox_username
             // 
-            txtbox_username.Location = new Point(98, 143);
+            txtbox_username.Location = new Point(98, 129);
             txtbox_username.Name = "txtbox_username";
             txtbox_username.Size = new Size(179, 27);
             txtbox_username.TabIndex = 0;
@@ -45,7 +45,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(98, 120);
+            label1.Location = new Point(98, 106);
             label1.Name = "label1";
             label1.Size = new Size(78, 20);
             label1.TabIndex = 1;
@@ -53,9 +53,9 @@
             // 
             // btn_login
             // 
-            btn_login.Location = new Point(98, 236);
+            btn_login.Location = new Point(98, 243);
             btn_login.Name = "btn_login";
-            btn_login.Size = new Size(94, 29);
+            btn_login.Size = new Size(179, 50);
             btn_login.TabIndex = 2;
             btn_login.Text = "Login";
             btn_login.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(98, 180);
+            label2.Location = new Point(98, 173);
             label2.Name = "label2";
             label2.Size = new Size(73, 20);
             label2.TabIndex = 4;
@@ -72,7 +72,7 @@
             // 
             // txtbox_pass
             // 
-            txtbox_pass.Location = new Point(98, 203);
+            txtbox_pass.Location = new Point(98, 196);
             txtbox_pass.Name = "txtbox_pass";
             txtbox_pass.Size = new Size(179, 27);
             txtbox_pass.TabIndex = 3;
