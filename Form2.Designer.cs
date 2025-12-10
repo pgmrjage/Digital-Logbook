@@ -40,7 +40,6 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             user_clear_btn = new Button();
-            user_btn_cancel = new Button();
             user_address_txtbox = new TextBox();
             label17 = new Label();
             user_btn_submit = new Button();
@@ -59,12 +58,12 @@
             user_suffix_cb = new ComboBox();
             label13 = new Label();
             tabPage2 = new TabPage();
-            dateTimePicker1 = new DateTimePicker();
+            user_datetimepicker = new DateTimePicker();
             textBox9 = new TextBox();
             label2 = new Label();
-            comboBox2 = new ComboBox();
-            listBox2 = new ListBox();
-            textBox2 = new TextBox();
+            user_filter_cb = new ComboBox();
+            user_record_listbox = new ListBox();
+            user_search_txtbox = new TextBox();
             btn_cancel = new Button();
             btn_submit = new Button();
             textBox8 = new TextBox();
@@ -164,7 +163,6 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(user_clear_btn);
-            tabPage1.Controls.Add(user_btn_cancel);
             tabPage1.Controls.Add(user_address_txtbox);
             tabPage1.Controls.Add(label17);
             tabPage1.Controls.Add(user_btn_submit);
@@ -199,17 +197,6 @@
             user_clear_btn.Text = "Clear All";
             user_clear_btn.UseVisualStyleBackColor = true;
             user_clear_btn.Click += user_clear_btn_Click;
-            // 
-            // user_btn_cancel
-            // 
-            user_btn_cancel.Location = new Point(73, 495);
-            user_btn_cancel.Name = "user_btn_cancel";
-            user_btn_cancel.Size = new Size(94, 29);
-            user_btn_cancel.TabIndex = 4;
-            user_btn_cancel.Text = "Cancel";
-            user_btn_cancel.TextAlign = ContentAlignment.BottomCenter;
-            user_btn_cancel.UseVisualStyleBackColor = true;
-            user_btn_cancel.Click += user_btn_cancel_Click;
             // 
             // user_address_txtbox
             // 
@@ -360,12 +347,12 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(dateTimePicker1);
+            tabPage2.Controls.Add(user_datetimepicker);
             tabPage2.Controls.Add(textBox9);
             tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(comboBox2);
-            tabPage2.Controls.Add(listBox2);
-            tabPage2.Controls.Add(textBox2);
+            tabPage2.Controls.Add(user_filter_cb);
+            tabPage2.Controls.Add(user_record_listbox);
+            tabPage2.Controls.Add(user_search_txtbox);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -374,12 +361,12 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // user_datetimepicker
             // 
-            dateTimePicker1.Location = new Point(30, 65);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
-            dateTimePicker1.TabIndex = 14;
+            user_datetimepicker.Location = new Point(30, 65);
+            user_datetimepicker.Name = "user_datetimepicker";
+            user_datetimepicker.Size = new Size(250, 27);
+            user_datetimepicker.TabIndex = 14;
             // 
             // textBox9
             // 
@@ -399,29 +386,29 @@
             label2.TabIndex = 11;
             label2.Text = "Filter:";
             // 
-            // comboBox2
+            // user_filter_cb
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(716, 30);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(57, 28);
-            comboBox2.TabIndex = 10;
+            user_filter_cb.FormattingEnabled = true;
+            user_filter_cb.Location = new Point(716, 30);
+            user_filter_cb.Name = "user_filter_cb";
+            user_filter_cb.Size = new Size(57, 28);
+            user_filter_cb.TabIndex = 10;
             // 
-            // listBox2
+            // user_record_listbox
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.Location = new Point(30, 103);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(743, 384);
-            listBox2.TabIndex = 9;
+            user_record_listbox.FormattingEnabled = true;
+            user_record_listbox.Location = new Point(30, 103);
+            user_record_listbox.Name = "user_record_listbox";
+            user_record_listbox.Size = new Size(743, 384);
+            user_record_listbox.TabIndex = 9;
             // 
-            // textBox2
+            // user_search_txtbox
             // 
-            textBox2.Location = new Point(558, 65);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Search";
-            textBox2.Size = new Size(215, 27);
-            textBox2.TabIndex = 7;
+            user_search_txtbox.Location = new Point(558, 65);
+            user_search_txtbox.Name = "user_search_txtbox";
+            user_search_txtbox.PlaceholderText = "Search";
+            user_search_txtbox.Size = new Size(215, 27);
+            user_search_txtbox.TabIndex = 7;
             // 
             // btn_cancel
             // 
@@ -432,7 +419,6 @@
             btn_cancel.Text = "Clear All";
             btn_cancel.TextAlign = ContentAlignment.BottomCenter;
             btn_cancel.UseVisualStyleBackColor = true;
-            btn_cancel.Click += btn_clearall_Click;
             // 
             // btn_submit
             // 
@@ -608,9 +594,9 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label label2;
-        private ComboBox comboBox2;
-        private ListBox listBox2;
-        private TextBox textBox2;
+        private ComboBox user_filter_cb;
+        private ListBox user_record_listbox;
+        private TextBox user_search_txtbox;
         private TextBox textBox7;
         private Label label8;
         private TextBox textBox6;
@@ -630,11 +616,10 @@
         private Button btn_cancel;
         private Button btn_submit;
         private TextBox textBox9;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker user_datetimepicker;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem createToolStripMenuItem;
         private Button user_clear_btn;
-        private Button user_btn_cancel;
         private Button user_btn_submit;
         private Label label4;
         private TextBox user_business_txtbox;

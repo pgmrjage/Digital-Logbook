@@ -19,20 +19,37 @@ namespace WinFormsApp1
 
             // FOR SUFFIX COMBOBOX 
             //===========================================================================
-            //initialize dropdown format
-            suffix_comboBox.Visible = true;
-            suffix_comboBox.Enabled = true;
-            suffix_comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            string[] user_choice = { "Sr", "Jr", "V", "IV", "III", "II", "I" };
 
-            //list of name extension
-            string[] suffix = { "N/A", "Sr", "Jr", "II", "III", "IV", "V" };
-            suffix_comboBox.DataSource = suffix;
-
-            //default
-
+            foreach (string choice in user_choice)
+            {
+                user_suffix_cb.Items.Add(choice);
+            }
             //===========================================================================
 
         }
+
+        void ClearAll(Control Parent)
+        {
+            foreach (Control nth in Parent.Controls)
+            {
+                if (nth is TextBox tb)  //clear for ComboBox
+                {
+                    tb.Clear();
+                }
+                else if (nth is ComboBox cb) // Clear for ComboBox
+                {
+                    cb.Items.Clear();
+                    cb.Text = "";
+                }
+                // VERY IMPORTANT: go inside containers such as TabPage, Panel, GroupBox, etc.
+                if (nth.HasChildren)
+                {
+                    ClearAll(nth);
+                }
+            }
+        }
+
 
 
         //Menustrip --> "CREATE"
@@ -49,12 +66,7 @@ namespace WinFormsApp1
 
         }
 
-        private void btn_clearall_Click(object sender, EventArgs e)
-        {
-            tabPage1.Text = "Add Tab";
-            ClearGroupBoxControl(tabPage1);
-        }
-
+        
         private void suffix_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -73,28 +85,12 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        private void ClearGroupBoxControl(Control parent)
-        {
-            foreach (Control c in parent.Controls)
-            {
-                if (c is TextBox tb)
-                {
-                    tb.Clear();
-                }
-            }
-        }
-
-        private void user_btn_cancel_Click(object sender, EventArgs e)
-        {
-            Form1 f1 = new Form1();
-            f1.Show();
-
-            this.Close();
-        }
+        
 
         private void user_clear_btn_Click(object sender, EventArgs e)
         {
-
+            ClearAll(this); //Clear All Valus inputted by the Users
         }
+
     }
 }
