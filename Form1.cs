@@ -12,18 +12,20 @@ namespace WinFormsApp1
             string username = txtbox_username.Text;
             string password = txtbox_pass.Text;
 
-            if (username == "admin" &&  password == "123")  //Admin
+            if (username == "admin" &&  password == "123")  //Admin Sample Account
             {
                 MessageBox.Show("Hello Admin");
                 Form4 f4 = new Form4();
                 f4.Show();
 
                 this.Hide();
-            }else if (username == "user" && password == "123")  //User
+            }else if (username == "user" && password == "123")  //User Sample Account
             {
                 MessageBox.Show("Login Successfully");
                 Form2 f2 = new Form2();
                 f2.Show();
+
+                this.Hide();    //hides the login
             }
             else { MessageBox.Show("Invalid Credentials, Please Try Again"); }
 

@@ -104,6 +104,7 @@
             admin_clear_btn.TabIndex = 17;
             admin_clear_btn.Text = "Clear All";
             admin_clear_btn.UseVisualStyleBackColor = true;
+            admin_clear_btn.Click += admin_clear_btn_Click;
             // 
             // btn_cancel
             // 

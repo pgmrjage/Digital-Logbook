@@ -29,9 +29,7 @@ namespace WinFormsApp1
             suffix_comboBox.DataSource = suffix;
 
             //default
-            suffix_comboBox.SelectedIndex = 0;
 
-            suffix_comboBox.Refresh();
             //===========================================================================
 
         }
@@ -51,17 +49,10 @@ namespace WinFormsApp1
 
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void btn_clearall_Click(object sender, EventArgs e)
         {
-            foreach (Control c in tabPage1.Controls)
-            {
-                if (c is TextBox tb)
-                {
-                    tb.Clear();
-                }
-            }
-
-
+            tabPage1.Text = "Add Tab";
+            ClearGroupBoxControl(tabPage1);
         }
 
         private void suffix_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,6 +61,38 @@ namespace WinFormsApp1
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+
+            this.Close();
+        }
+
+        private void ClearGroupBoxControl(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    tb.Clear();
+                }
+            }
+        }
+
+        private void user_btn_cancel_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+
+            this.Close();
+        }
+
+        private void user_clear_btn_Click(object sender, EventArgs e)
         {
 
         }

@@ -21,7 +21,7 @@ namespace WinFormsApp1
             //initialize dropdown format
             admin_clear_btn.Visible = true;
             admin_clear_btn.Enabled = true;
-            
+
 
             //list of name extension
             string[] suffix = { "N/A", "Sr", "Jr", "II", "III", "IV", "V" };
@@ -35,10 +35,15 @@ namespace WinFormsApp1
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
-        {            
+        {
             Form4 f4 = new Form4();
             f4.Show();
             this.Close();
+        }
+
+        private void admin_clear_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
