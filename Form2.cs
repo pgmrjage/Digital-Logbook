@@ -16,18 +16,40 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
+            //===========================================================================
+                                            //TABPAGE 2
+            //===========================================================================
 
             // FOR SUFFIX COMBOBOX 
             //===========================================================================
             string[] user_choice = { "Sr", "Jr", "V", "IV", "III", "II", "I" };
 
-            foreach (string choice in user_choice)
+            foreach (string user_choice_index in user_choice)
             {
-                user_suffix_cb.Items.Add(choice);
+                user_suffix_cb.Items.Add(user_choice_index);
             }
             //===========================================================================
 
+
+
+
+            //===========================================================================
+                                            //TABPAGE 2
+            //===========================================================================
+
+            // FOR FILTER COMBOBOX
+
+            int[] filter = { 5, 10, 15, 20,};
+            foreach (int filter_index in filter)
+            {
+                user_filter_cb.Items.Add(filter_index);
+            }
+            user_filter_cb.Items.Add("All");
+
+
         }
+
+
 
         void ClearAll(Control Parent)
         {
@@ -41,9 +63,8 @@ namespace WinFormsApp1
                 {
                     cb.Items.Clear();
                     cb.Text = "";
-                }
-                // VERY IMPORTANT: go inside containers such as TabPage, Panel, GroupBox, etc.
-                if (nth.HasChildren)
+                }                
+                if (nth.HasChildren)    // VERY IMPORTANT: go inside containers such as TabPage, Panel, GroupBox, etc.
                 {
                     ClearAll(nth);
                 }
@@ -66,7 +87,7 @@ namespace WinFormsApp1
 
         }
 
-        
+
         private void suffix_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -85,12 +106,17 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        
+
 
         private void user_clear_btn_Click(object sender, EventArgs e)
         {
             ClearAll(this); //Clear All Valus inputted by the Users
         }
 
+        private void user_dateEncode_cb_CheckedChanged(object sender, EventArgs e)
+        {
+            user_dateEncode_gb.Enabled = user_dateEncode_cb.Checked;
+
+        }
     }
 }

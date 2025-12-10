@@ -58,8 +58,12 @@
             user_suffix_cb = new ComboBox();
             label13 = new Label();
             tabPage2 = new TabPage();
-            user_datetimepicker = new DateTimePicker();
-            textBox9 = new TextBox();
+            user_dateEncode_cb = new CheckBox();
+            user_dateEncode_gb = new GroupBox();
+            user_to_datetimepicker = new DateTimePicker();
+            label19 = new Label();
+            user_from_datetimepicker = new DateTimePicker();
+            label18 = new Label();
             label2 = new Label();
             user_filter_cb = new ComboBox();
             user_record_listbox = new ListBox();
@@ -85,6 +89,7 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            user_dateEncode_gb.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -347,8 +352,8 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(user_datetimepicker);
-            tabPage2.Controls.Add(textBox9);
+            tabPage2.Controls.Add(user_dateEncode_cb);
+            tabPage2.Controls.Add(user_dateEncode_gb);
             tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(user_filter_cb);
             tabPage2.Controls.Add(user_record_listbox);
@@ -361,26 +366,67 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // user_datetimepicker
+            // user_dateEncode_cb
             // 
-            user_datetimepicker.Location = new Point(30, 65);
-            user_datetimepicker.Name = "user_datetimepicker";
-            user_datetimepicker.Size = new Size(250, 27);
-            user_datetimepicker.TabIndex = 14;
+            user_dateEncode_cb.AutoSize = true;
+            user_dateEncode_cb.Location = new Point(30, 30);
+            user_dateEncode_cb.Name = "user_dateEncode_cb";
+            user_dateEncode_cb.Size = new Size(128, 24);
+            user_dateEncode_cb.TabIndex = 17;
+            user_dateEncode_cb.Text = "Date Encoded:";
+            user_dateEncode_cb.UseVisualStyleBackColor = true;
+            user_dateEncode_cb.CheckedChanged += user_dateEncode_cb_CheckedChanged;
             // 
-            // textBox9
+            // user_dateEncode_gb
             // 
-            textBox9.Location = new Point(30, 515);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(102, 27);
-            textBox9.TabIndex = 12;
-            textBox9.Text = "EDIT";
-            textBox9.TextAlign = HorizontalAlignment.Center;
+            user_dateEncode_gb.Controls.Add(user_to_datetimepicker);
+            user_dateEncode_gb.Controls.Add(label19);
+            user_dateEncode_gb.Controls.Add(user_from_datetimepicker);
+            user_dateEncode_gb.Controls.Add(label18);
+            user_dateEncode_gb.Location = new Point(30, 49);
+            user_dateEncode_gb.Name = "user_dateEncode_gb";
+            user_dateEncode_gb.Size = new Size(208, 104);
+            user_dateEncode_gb.TabIndex = 16;
+            user_dateEncode_gb.TabStop = false;
+            // 
+            // user_to_datetimepicker
+            // 
+            user_to_datetimepicker.Format = DateTimePickerFormat.Short;
+            user_to_datetimepicker.Location = new Point(77, 59);
+            user_to_datetimepicker.Name = "user_to_datetimepicker";
+            user_to_datetimepicker.Size = new Size(108, 27);
+            user_to_datetimepicker.TabIndex = 17;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(25, 66);
+            label19.Name = "label19";
+            label19.Size = new Size(28, 20);
+            label19.TabIndex = 16;
+            label19.Text = "To:";
+            // 
+            // user_from_datetimepicker
+            // 
+            user_from_datetimepicker.Format = DateTimePickerFormat.Short;
+            user_from_datetimepicker.Location = new Point(77, 26);
+            user_from_datetimepicker.Name = "user_from_datetimepicker";
+            user_from_datetimepicker.Size = new Size(108, 27);
+            user_from_datetimepicker.TabIndex = 14;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(25, 33);
+            label18.Name = "label18";
+            label18.Size = new Size(46, 20);
+            label18.TabIndex = 15;
+            label18.Text = "From:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(665, 38);
+            label2.Location = new Point(665, 100);
             label2.Name = "label2";
             label2.Size = new Size(45, 20);
             label2.TabIndex = 11;
@@ -389,7 +435,7 @@
             // user_filter_cb
             // 
             user_filter_cb.FormattingEnabled = true;
-            user_filter_cb.Location = new Point(716, 30);
+            user_filter_cb.Location = new Point(716, 92);
             user_filter_cb.Name = "user_filter_cb";
             user_filter_cb.Size = new Size(57, 28);
             user_filter_cb.TabIndex = 10;
@@ -397,14 +443,14 @@
             // user_record_listbox
             // 
             user_record_listbox.FormattingEnabled = true;
-            user_record_listbox.Location = new Point(30, 103);
+            user_record_listbox.Location = new Point(30, 183);
             user_record_listbox.Name = "user_record_listbox";
-            user_record_listbox.Size = new Size(743, 384);
+            user_record_listbox.Size = new Size(743, 364);
             user_record_listbox.TabIndex = 9;
             // 
             // user_search_txtbox
             // 
-            user_search_txtbox.Location = new Point(558, 65);
+            user_search_txtbox.Location = new Point(558, 126);
             user_search_txtbox.Name = "user_search_txtbox";
             user_search_txtbox.PlaceholderText = "Search";
             user_search_txtbox.Size = new Size(215, 27);
@@ -577,6 +623,8 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            user_dateEncode_gb.ResumeLayout(false);
+            user_dateEncode_gb.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -615,8 +663,7 @@
         private Label label10;
         private Button btn_cancel;
         private Button btn_submit;
-        private TextBox textBox9;
-        private DateTimePicker user_datetimepicker;
+        private DateTimePicker user_from_datetimepicker;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem createToolStripMenuItem;
         private Button user_clear_btn;
@@ -636,5 +683,10 @@
         private Label label16;
         private TextBox user_surname_txtbox;
         private Label label17;
+        private GroupBox user_dateEncode_gb;
+        private Label label18;
+        private CheckBox user_dateEncode_cb;
+        private DateTimePicker user_to_datetimepicker;
+        private Label label19;
     }
 }
