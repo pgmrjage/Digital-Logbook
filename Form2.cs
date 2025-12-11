@@ -17,35 +17,41 @@ namespace WinFormsApp1
             InitializeComponent();
 
             //===========================================================================
-                                            //TABPAGE 2
+            //TABPAGE 1
             //===========================================================================
 
             // FOR SUFFIX COMBOBOX 
-            //===========================================================================
-            string[] user_choice = { "Sr", "Jr", "V", "IV", "III", "II", "I" };
-
+            //===========================================================================            
+            user_suffix_cb.DropDownStyle =  ComboBoxStyle.DropDownList; //set dafault comboBox into dropdown list
+            string[] user_choice = { "", "Sr", "Jr", "V", "IV", "III", "II", "I" };
             foreach (string user_choice_index in user_choice)
             {
                 user_suffix_cb.Items.Add(user_choice_index);
             }
+            //suffix is set to default blank
+            user_suffix_cb.SelectedIndex = 0;
             //===========================================================================
 
 
 
 
             //===========================================================================
-                                            //TABPAGE 2
+            //TABPAGE 2
             //===========================================================================
 
             // FOR FILTER COMBOBOX
+            user_filter_cb.DropDownStyle = ComboBoxStyle.DropDownList;  //set default comboBox into dropdown List
+            //date encode set to locked by default
+            user_dateEncode_gb.Enabled = false;
 
-            int[] filter = { 5, 10, 15, 20,};
+
+            int[] filter = { 5, 10, 15, 20, };
             foreach (int filter_index in filter)
             {
                 user_filter_cb.Items.Add(filter_index);
             }
             user_filter_cb.Items.Add("All");
-
+            user_filter_cb.SelectedIndex = 0;
 
         }
 
@@ -61,9 +67,14 @@ namespace WinFormsApp1
                 }
                 else if (nth is ComboBox cb) // Clear for ComboBox
                 {
-                    cb.Items.Clear();
-                    cb.Text = "";
-                }                
+                    if (cb.Name != "user_filter_cb")    //TabPage2: Filter ComboBox
+                    {
+                        cb.SelectedIndex = -1;           // reset selection
+                        cb.Text = "";                    // (optional)
+                    }
+                    //cb.Items.Clear();
+                    //cb.Text = "";
+                }
                 if (nth.HasChildren)    // VERY IMPORTANT: go inside containers such as TabPage, Panel, GroupBox, etc.
                 {
                     ClearAll(nth);
@@ -110,7 +121,11 @@ namespace WinFormsApp1
 
         private void user_clear_btn_Click(object sender, EventArgs e)
         {
-            ClearAll(this); //Clear All Valus inputted by the Users
+            ClearAll(this); //Clear All Values inputted by the Users in TabPage1
+        }
+        private void user_clear_btn1_Click(object sender, EventArgs e)
+        {            
+            ClearAll(this); //Clear All Values inputted by the Users in TabPage2            
         }
 
         private void user_dateEncode_cb_CheckedChanged(object sender, EventArgs e)
@@ -118,5 +133,7 @@ namespace WinFormsApp1
             user_dateEncode_gb.Enabled = user_dateEncode_cb.Checked;
 
         }
+
+        
     }
 }

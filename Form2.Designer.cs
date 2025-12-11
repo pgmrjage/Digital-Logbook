@@ -58,6 +58,7 @@
             user_suffix_cb = new ComboBox();
             label13 = new Label();
             tabPage2 = new TabPage();
+            user_clear_btn1 = new Button();
             user_dateEncode_cb = new CheckBox();
             user_dateEncode_gb = new GroupBox();
             user_to_datetimepicker = new DateTimePicker();
@@ -352,6 +353,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(user_clear_btn1);
             tabPage2.Controls.Add(user_dateEncode_cb);
             tabPage2.Controls.Add(user_dateEncode_gb);
             tabPage2.Controls.Add(label2);
@@ -365,6 +367,16 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // user_clear_btn1
+            // 
+            user_clear_btn1.Location = new Point(679, 523);
+            user_clear_btn1.Name = "user_clear_btn1";
+            user_clear_btn1.Size = new Size(94, 29);
+            user_clear_btn1.TabIndex = 18;
+            user_clear_btn1.Text = "Clear All";
+            user_clear_btn1.UseVisualStyleBackColor = true;
+            user_clear_btn1.Click += user_clear_btn1_Click;
             // 
             // user_dateEncode_cb
             // 
@@ -445,7 +457,7 @@
             user_record_listbox.FormattingEnabled = true;
             user_record_listbox.Location = new Point(30, 183);
             user_record_listbox.Name = "user_record_listbox";
-            user_record_listbox.Size = new Size(743, 364);
+            user_record_listbox.Size = new Size(743, 324);
             user_record_listbox.TabIndex = 9;
             // 
             // user_search_txtbox
@@ -688,5 +700,6 @@
         private CheckBox user_dateEncode_cb;
         private DateTimePicker user_to_datetimepicker;
         private Label label19;
+        private Button user_clear_btn1;
     }
 }
