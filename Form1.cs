@@ -7,6 +7,12 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
+        //void callForm4 (object sender, EventArgs e)
+        //{
+        //    Form4 f4 = new Form4();
+        //    f4.Show();
+        //}
+
         private void btn_login_Click(object sender, EventArgs e)
         {
             string username = txtbox_username.Text;
@@ -17,6 +23,9 @@ namespace WinFormsApp1
                 MessageBox.Show("Hello Admin");
                 Form4 f4 = new Form4();
                 f4.Show();
+
+                //testing call function
+                //callForm4 (sender, e);
 
                 this.Hide();
             }else if (username == "user" && password == "123")  //User Sample Account
