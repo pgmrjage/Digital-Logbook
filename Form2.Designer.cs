@@ -575,7 +575,6 @@
             suffix_comboBox.Name = "suffix_comboBox";
             suffix_comboBox.Size = new Size(67, 28);
             suffix_comboBox.TabIndex = 24;
-            suffix_comboBox.SelectedIndexChanged += suffix_comboBox_SelectedIndexChanged;
             // 
             // label6
             // 

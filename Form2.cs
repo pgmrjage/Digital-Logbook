@@ -80,40 +80,23 @@ namespace WinFormsApp1
                     ClearAll(nth);
                 }
             }
-        }
-
-
-
-        //Menustrip --> "CREATE"
-        private void createToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form3 f3 = new Form3();
-            f3.Show();
-
-            this.Hide();
-        }
+        }  
 
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
 
-
-        private void suffix_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //LOAD FORM 1 FUNCTION
+        private void LoadForm1()
         {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            Form1 f1 = new Form1();
+            f1.Show();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
-            f1.Show();
-
+            LoadForm1();    //call function LoadForm1
             this.Close();
         }
 
