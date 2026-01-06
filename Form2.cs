@@ -124,7 +124,7 @@ namespace WinFormsApp1
             ClearAll(this); //Clear All Values inputted by the Users in TabPage1
         }
         private void user_clear_btn1_Click(object sender, EventArgs e)
-        {            
+        {
             ClearAll(this); //Clear All Values inputted by the Users in TabPage2            
         }
 
@@ -134,6 +134,27 @@ namespace WinFormsApp1
 
         }
 
-        
+        // USER -> SUBMIT BUTTON
+        private void user_btn_submit_Click(object sender, EventArgs e)
+        {
+            DialogResult proceed = MessageBox.Show("Are you sure you want to Submit?","Confirm", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question);
+
+
+            if (proceed == DialogResult.Yes)
+            {
+                MessageBox.Show("Successfully Recorded");
+                ClearAll(this); //clearing values
+            }
+            else if (proceed == DialogResult.No)
+            {
+                MessageBox.Show("Record is not been Recorded");
+                ClearAll(this); //clearing values
+
+                //refreshing the Form
+                this.Refresh();
+            }
+        }
     }
 }
