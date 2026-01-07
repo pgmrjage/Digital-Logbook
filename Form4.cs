@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,30 @@ namespace WinFormsApp1
             panelMain.Controls.Clear();
             panelMain.Dock = DockStyle.Fill;
             panelMain.Controls.Add(content);
+
+        }
+
+        private void load_form1()
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirm logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                load_form1 ();
+                this.Close();
+
+            }
 
         }
 
@@ -90,19 +115,66 @@ namespace WinFormsApp1
                 return btn;
             }
 
-                               
-            panelSidebar.Controls.Add(CreateSidebarButton("Logout"));
-            panelSidebar.Controls.Add(CreateSidebarButton("Settings"));
-            panelSidebar.Controls.Add(CreateSidebarButton("Reports"));
-            panelSidebar.Controls.Add(CreateSidebarButton("Dashboard"));
-
-
-            string[] sidebtn = { "btnLogout", "btnSettings", "btnReports", "btnDashboard" };
-            
-            foreach(string btn in sidebtn)
+            Panel dashboardPanel = new Panel { };
+            dashboardPanel.Controls.Add(new Label
             {
-                CreateSidebarButton(btn);
-            }
+                Text = "Dashboard Page",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+
+            });
+            Panel createNewPanel = new Panel { };
+            createNewPanel.Controls.Add(new Label
+            {
+                Text = "Create New Page",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+
+            });
+            Panel reportsPanel = new Panel { };
+            reportsPanel.Controls.Add(new Label
+            {
+                Text = "Reports Page",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+
+            });
+            Panel aboutPanel = new Panel { };
+            aboutPanel.Controls.Add(new Label
+            {
+                Text = "About Us Page",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+
+            });
+           
+            
+
+
+
+
+
+            Button btnDashboard = CreateSidebarButton("Dashboard");
+            btnDashboard.Click += (s, e) => LoadContent(dashboardPanel);
+            Button btnCreateNew = CreateSidebarButton("Create New");
+            btnCreateNew.Click += (s, e) => LoadContent(createNewPanel);
+            Button btnReports = CreateSidebarButton("Reports");
+            btnReports.Click += (s, e) => LoadContent(reportsPanel);
+            Button btnAbout = CreateSidebarButton("About Us");
+            btnAbout.Click += (s, e) => LoadContent(aboutPanel);
+            Button btnLogout = CreateSidebarButton("Logout");
+            btnLogout.Click += btn_logout_Click;
+
+
+            //reverse order
+            panelSidebar.Controls.Add(btnLogout);
+            panelSidebar.Controls.Add(btnAbout);
+            panelSidebar.Controls.Add(btnReports);
+            panelSidebar.Controls.Add(btnCreateNew);
+            panelSidebar.Controls.Add(btnDashboard);
+            
+
+
 
 
 
