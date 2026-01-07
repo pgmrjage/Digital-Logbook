@@ -16,6 +16,14 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
+            Panel panelSidebar = new Panel();
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Dock = DockStyle.Left;
+            panelSidebar.Width = 180;
+            panelSidebar.BackColor = Color.FromArgb(30, 30, 30);
+
+            this.Controls.Add(panelSidebar);
+
             //===========================================================================
             //TABPAGE 1
             //===========================================================================
@@ -82,10 +90,6 @@ namespace WinFormsApp1
             }
         }  
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
 
         //LOAD FORM 1 FUNCTION
         private void LoadForm1()
@@ -139,5 +143,10 @@ namespace WinFormsApp1
                 this.Refresh();
             }
         }
+
+
+        
+
+
     }
 }

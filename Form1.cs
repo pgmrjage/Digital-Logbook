@@ -5,9 +5,20 @@ namespace WinFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.None;
+
+
+            Panel loginPanelSide = new Panel();
+            loginPanelSide.Name = "user_logsidepanel";
+            loginPanelSide.Width = 250;
+            loginPanelSide.Dock = DockStyle.Left;
+            loginPanelSide.BackColor = Color.FromArgb(30, 30, 30);
+
+            this.Controls.Add(loginPanelSide);
         }
 
-        //void callForm4 (object sender, EventArgs e)
+        //void callForm4 ()
         //{
         //    Form4 f4 = new Form4();
         //    f4.Show();
@@ -22,10 +33,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Hello Admin");
                 Form4 f4 = new Form4();
-                f4.Show();
-
-                //testing call function
-                //callForm4 (sender, e);
+                f4.Show();                               
 
                 this.Hide();
             }else if (username == "user" && password == "123")  //User Sample Account

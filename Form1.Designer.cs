@@ -37,25 +37,27 @@
             // 
             // txtbox_username
             // 
-            txtbox_username.Location = new Point(98, 129);
+            txtbox_username.Location = new Point(360, 99);
+            txtbox_username.Margin = new Padding(3, 2, 3, 2);
             txtbox_username.Name = "txtbox_username";
-            txtbox_username.Size = new Size(179, 27);
+            txtbox_username.Size = new Size(157, 23);
             txtbox_username.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(98, 106);
+            label1.Location = new Point(360, 82);
             label1.Name = "label1";
-            label1.Size = new Size(78, 20);
+            label1.Size = new Size(63, 15);
             label1.TabIndex = 1;
             label1.Text = "Username:";
             // 
             // btn_login
             // 
-            btn_login.Location = new Point(98, 243);
+            btn_login.Location = new Point(360, 184);
+            btn_login.Margin = new Padding(3, 2, 3, 2);
             btn_login.Name = "btn_login";
-            btn_login.Size = new Size(179, 50);
+            btn_login.Size = new Size(157, 38);
             btn_login.TabIndex = 2;
             btn_login.Text = "Login";
             btn_login.UseVisualStyleBackColor = true;
@@ -64,31 +66,37 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(98, 173);
+            label2.Location = new Point(360, 132);
             label2.Name = "label2";
-            label2.Size = new Size(73, 20);
+            label2.Size = new Size(60, 15);
             label2.TabIndex = 4;
             label2.Text = "Password:";
             // 
             // txtbox_pass
             // 
-            txtbox_pass.Location = new Point(98, 196);
+            txtbox_pass.Location = new Point(360, 149);
+            txtbox_pass.Margin = new Padding(3, 2, 3, 2);
             txtbox_pass.Name = "txtbox_pass";
-            txtbox_pass.Size = new Size(179, 27);
+            txtbox_pass.Size = new Size(157, 23);
             txtbox_pass.TabIndex = 3;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(391, 409);
+            AllowDrop = true;
+            AutoScaleMode = AutoScaleMode.Inherit;
+            BackColor = Color.AntiqueWhite;
+            ClientSize = new Size(628, 319);
+            ControlBox = false;
             Controls.Add(label2);
             Controls.Add(txtbox_pass);
             Controls.Add(btn_login);
             Controls.Add(label1);
             Controls.Add(txtbox_username);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            TopMost = true;
             ResumeLayout(false);
             PerformLayout();
         }

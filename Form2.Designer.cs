@@ -32,6 +32,15 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            editToolStripMenuItem = new ToolStripMenuItem();
+            undoToolStripMenuItem = new ToolStripMenuItem();
+            redoToolStripMenuItem = new ToolStripMenuItem();
+            clearAllToolStripMenuItem = new ToolStripMenuItem();
+            cutToolStripMenuItem = new ToolStripMenuItem();
+            copyToolStripMenuItem = new ToolStripMenuItem();
+            pasteToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            selectAllToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutUsToolStripMenuItem = new ToolStripMenuItem();
             tabControl1 = new TabControl();
@@ -83,15 +92,6 @@
             label6 = new Label();
             label5 = new Label();
             label10 = new Label();
-            editToolStripMenuItem = new ToolStripMenuItem();
-            clearAllToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
-            cutToolStripMenuItem = new ToolStripMenuItem();
-            copyToolStripMenuItem = new ToolStripMenuItem();
-            selectAllToolStripMenuItem = new ToolStripMenuItem();
-            pasteToolStripMenuItem = new ToolStripMenuItem();
-            undoToolStripMenuItem = new ToolStripMenuItem();
-            redoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -105,7 +105,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(911, 28);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(797, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -113,43 +114,99 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(46, 24);
+            fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(112, 22);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(224, 26);
+            exitToolStripMenuItem.Size = new Size(112, 22);
             exitToolStripMenuItem.Text = "Exit";
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, clearAllToolStripMenuItem, cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, deleteToolStripMenuItem, selectAllToolStripMenuItem });
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(39, 20);
+            editToolStripMenuItem.Text = "Edit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            undoToolStripMenuItem.Size = new Size(122, 22);
+            undoToolStripMenuItem.Text = "Undo";
+            // 
+            // redoToolStripMenuItem
+            // 
+            redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            redoToolStripMenuItem.Size = new Size(122, 22);
+            redoToolStripMenuItem.Text = "Redo";
+            // 
+            // clearAllToolStripMenuItem
+            // 
+            clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
+            clearAllToolStripMenuItem.Size = new Size(122, 22);
+            clearAllToolStripMenuItem.Text = "Clear All";
+            // 
+            // cutToolStripMenuItem
+            // 
+            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            cutToolStripMenuItem.Size = new Size(122, 22);
+            cutToolStripMenuItem.Text = "Cut";
+            // 
+            // copyToolStripMenuItem
+            // 
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.Size = new Size(122, 22);
+            copyToolStripMenuItem.Text = "Copy";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            pasteToolStripMenuItem.Size = new Size(122, 22);
+            pasteToolStripMenuItem.Text = "Paste";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(122, 22);
+            deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            selectAllToolStripMenuItem.Size = new Size(122, 22);
+            selectAllToolStripMenuItem.Text = "Select All";
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutUsToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(55, 24);
+            helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
             // 
             // aboutUsToolStripMenuItem
             // 
             aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            aboutUsToolStripMenuItem.Size = new Size(245, 26);
+            aboutUsToolStripMenuItem.Size = new Size(194, 22);
             aboutUsToolStripMenuItem.Text = "About Digital Logbook";
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(40, 48);
+            tabControl1.Location = new Point(248, 36);
+            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(820, 616);
+            tabControl1.Size = new Size(505, 462);
             tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -172,19 +229,21 @@
             tabPage1.Controls.Add(user_purpose_txtbox);
             tabPage1.Controls.Add(user_suffix_cb);
             tabPage1.Controls.Add(label13);
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(812, 583);
+            tabPage1.Padding = new Padding(3, 2, 3, 2);
+            tabPage1.Size = new Size(497, 434);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // user_clear_btn
             // 
-            user_clear_btn.Location = new Point(525, 495);
+            user_clear_btn.Location = new Point(459, 371);
+            user_clear_btn.Margin = new Padding(3, 2, 3, 2);
             user_clear_btn.Name = "user_clear_btn";
-            user_clear_btn.Size = new Size(94, 29);
+            user_clear_btn.Size = new Size(82, 22);
             user_clear_btn.TabIndex = 17;
             user_clear_btn.Text = "Clear All";
             user_clear_btn.UseVisualStyleBackColor = true;
@@ -192,26 +251,28 @@
             // 
             // user_address_txtbox
             // 
-            user_address_txtbox.Location = new Point(180, 196);
+            user_address_txtbox.Location = new Point(158, 147);
+            user_address_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_address_txtbox.Name = "user_address_txtbox";
             user_address_txtbox.PlaceholderText = "Complete Address";
-            user_address_txtbox.Size = new Size(330, 27);
+            user_address_txtbox.Size = new Size(289, 23);
             user_address_txtbox.TabIndex = 16;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(68, 66);
+            label17.Location = new Point(60, 50);
             label17.Name = "label17";
-            label17.Size = new Size(70, 20);
+            label17.Size = new Size(57, 15);
             label17.TabIndex = 0;
             label17.Text = "Surname:";
             // 
             // user_btn_submit
             // 
-            user_btn_submit.Location = new Point(625, 495);
+            user_btn_submit.Location = new Point(547, 371);
+            user_btn_submit.Margin = new Padding(3, 2, 3, 2);
             user_btn_submit.Name = "user_btn_submit";
-            user_btn_submit.Size = new Size(94, 29);
+            user_btn_submit.Size = new Size(82, 22);
             user_btn_submit.TabIndex = 3;
             user_btn_submit.Text = "Submit";
             user_btn_submit.TextAlign = ContentAlignment.BottomCenter;
@@ -220,121 +281,128 @@
             // 
             // user_surname_txtbox
             // 
-            user_surname_txtbox.Location = new Point(180, 59);
+            user_surname_txtbox.Location = new Point(158, 44);
+            user_surname_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_surname_txtbox.Name = "user_surname_txtbox";
             user_surname_txtbox.PlaceholderText = "Surname";
-            user_surname_txtbox.Size = new Size(190, 27);
+            user_surname_txtbox.Size = new Size(167, 23);
             user_surname_txtbox.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(68, 203);
+            label4.Location = new Point(60, 152);
             label4.Name = "label4";
-            label4.Size = new Size(65, 20);
+            label4.Size = new Size(52, 15);
             label4.TabIndex = 15;
             label4.Text = "Address:";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(68, 99);
+            label16.Location = new Point(60, 74);
             label16.Name = "label16";
-            label16.Size = new Size(83, 20);
+            label16.Size = new Size(67, 15);
             label16.TabIndex = 2;
             label16.Text = "First Name:";
             // 
             // user_business_txtbox
             // 
-            user_business_txtbox.Location = new Point(180, 417);
+            user_business_txtbox.Location = new Point(158, 313);
+            user_business_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_business_txtbox.Name = "user_business_txtbox";
             user_business_txtbox.PlaceholderText = "Business";
-            user_business_txtbox.Size = new Size(330, 27);
+            user_business_txtbox.Size = new Size(289, 23);
             user_business_txtbox.TabIndex = 14;
             // 
             // user_firstname_txtbox
             // 
-            user_firstname_txtbox.Location = new Point(180, 92);
+            user_firstname_txtbox.Location = new Point(158, 69);
+            user_firstname_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_firstname_txtbox.Name = "user_firstname_txtbox";
             user_firstname_txtbox.PlaceholderText = "First Name";
-            user_firstname_txtbox.Size = new Size(190, 27);
+            user_firstname_txtbox.Size = new Size(167, 23);
             user_firstname_txtbox.TabIndex = 3;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(68, 424);
+            label11.Location = new Point(60, 318);
             label11.Name = "label11";
-            label11.Size = new Size(67, 20);
+            label11.Size = new Size(55, 15);
             label11.TabIndex = 13;
             label11.Text = "Business:";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(68, 132);
+            label15.Location = new Point(60, 99);
             label15.Name = "label15";
-            label15.Size = new Size(100, 20);
+            label15.Size = new Size(79, 15);
             label15.TabIndex = 4;
             label15.Text = "Middle Initial:";
             // 
             // user_contact_txtbox
             // 
-            user_contact_txtbox.Location = new Point(180, 384);
+            user_contact_txtbox.Location = new Point(158, 288);
+            user_contact_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_contact_txtbox.Name = "user_contact_txtbox";
             user_contact_txtbox.PlaceholderText = "Cellphone No.";
-            user_contact_txtbox.Size = new Size(125, 27);
+            user_contact_txtbox.Size = new Size(110, 23);
             user_contact_txtbox.TabIndex = 12;
             // 
             // user_middleinitial_txtbox
             // 
-            user_middleinitial_txtbox.Location = new Point(180, 125);
+            user_middleinitial_txtbox.Location = new Point(158, 94);
+            user_middleinitial_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_middleinitial_txtbox.Name = "user_middleinitial_txtbox";
             user_middleinitial_txtbox.PlaceholderText = "Middle Initial";
-            user_middleinitial_txtbox.Size = new Size(190, 27);
+            user_middleinitial_txtbox.Size = new Size(167, 23);
             user_middleinitial_txtbox.TabIndex = 5;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(68, 391);
+            label12.Location = new Point(60, 293);
             label12.Name = "label12";
-            label12.Size = new Size(87, 20);
+            label12.Size = new Size(71, 15);
             label12.TabIndex = 11;
             label12.Text = "Contact No.";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(68, 170);
+            label14.Location = new Point(60, 128);
             label14.Name = "label14";
-            label14.Size = new Size(49, 20);
+            label14.Size = new Size(40, 15);
             label14.TabIndex = 6;
             label14.Text = "Suffix:";
             // 
             // user_purpose_txtbox
             // 
-            user_purpose_txtbox.Location = new Point(180, 236);
+            user_purpose_txtbox.Location = new Point(158, 177);
+            user_purpose_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_purpose_txtbox.Multiline = true;
             user_purpose_txtbox.Name = "user_purpose_txtbox";
             user_purpose_txtbox.PlaceholderText = "State your Purpose";
-            user_purpose_txtbox.Size = new Size(539, 142);
+            user_purpose_txtbox.Size = new Size(472, 108);
             user_purpose_txtbox.TabIndex = 10;
             // 
             // user_suffix_cb
             // 
             user_suffix_cb.FormattingEnabled = true;
-            user_suffix_cb.Location = new Point(180, 162);
+            user_suffix_cb.Location = new Point(158, 122);
+            user_suffix_cb.Margin = new Padding(3, 2, 3, 2);
             user_suffix_cb.Name = "user_suffix_cb";
-            user_suffix_cb.Size = new Size(67, 28);
+            user_suffix_cb.Size = new Size(59, 23);
             user_suffix_cb.TabIndex = 8;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(68, 236);
+            label13.Location = new Point(60, 177);
             label13.Name = "label13";
-            label13.Size = new Size(65, 20);
+            label13.Size = new Size(53, 15);
             label13.TabIndex = 9;
             label13.Text = "Purpose:";
             // 
@@ -347,19 +415,21 @@
             tabPage2.Controls.Add(user_filter_cb);
             tabPage2.Controls.Add(user_record_listbox);
             tabPage2.Controls.Add(user_search_txtbox);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(812, 583);
+            tabPage2.Padding = new Padding(3, 2, 3, 2);
+            tabPage2.Size = new Size(710, 434);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // user_clear_btn1
             // 
-            user_clear_btn1.Location = new Point(679, 523);
+            user_clear_btn1.Location = new Point(594, 392);
+            user_clear_btn1.Margin = new Padding(3, 2, 3, 2);
             user_clear_btn1.Name = "user_clear_btn1";
-            user_clear_btn1.Size = new Size(94, 29);
+            user_clear_btn1.Size = new Size(82, 22);
             user_clear_btn1.TabIndex = 18;
             user_clear_btn1.Text = "Clear All";
             user_clear_btn1.UseVisualStyleBackColor = true;
@@ -368,9 +438,10 @@
             // user_dateEncode_cb
             // 
             user_dateEncode_cb.AutoSize = true;
-            user_dateEncode_cb.Location = new Point(30, 30);
+            user_dateEncode_cb.Location = new Point(26, 22);
+            user_dateEncode_cb.Margin = new Padding(3, 2, 3, 2);
             user_dateEncode_cb.Name = "user_dateEncode_cb";
-            user_dateEncode_cb.Size = new Size(128, 24);
+            user_dateEncode_cb.Size = new Size(102, 19);
             user_dateEncode_cb.TabIndex = 17;
             user_dateEncode_cb.Text = "Date Encoded:";
             user_dateEncode_cb.UseVisualStyleBackColor = true;
@@ -382,77 +453,85 @@
             user_dateEncode_gb.Controls.Add(label19);
             user_dateEncode_gb.Controls.Add(user_from_datetimepicker);
             user_dateEncode_gb.Controls.Add(label18);
-            user_dateEncode_gb.Location = new Point(30, 49);
+            user_dateEncode_gb.Location = new Point(26, 37);
+            user_dateEncode_gb.Margin = new Padding(3, 2, 3, 2);
             user_dateEncode_gb.Name = "user_dateEncode_gb";
-            user_dateEncode_gb.Size = new Size(208, 104);
+            user_dateEncode_gb.Padding = new Padding(3, 2, 3, 2);
+            user_dateEncode_gb.Size = new Size(182, 78);
             user_dateEncode_gb.TabIndex = 16;
             user_dateEncode_gb.TabStop = false;
             // 
             // user_to_datetimepicker
             // 
             user_to_datetimepicker.Format = DateTimePickerFormat.Short;
-            user_to_datetimepicker.Location = new Point(77, 59);
+            user_to_datetimepicker.Location = new Point(67, 44);
+            user_to_datetimepicker.Margin = new Padding(3, 2, 3, 2);
             user_to_datetimepicker.Name = "user_to_datetimepicker";
-            user_to_datetimepicker.Size = new Size(108, 27);
+            user_to_datetimepicker.Size = new Size(95, 23);
             user_to_datetimepicker.TabIndex = 17;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(25, 66);
+            label19.Location = new Point(22, 50);
             label19.Name = "label19";
-            label19.Size = new Size(28, 20);
+            label19.Size = new Size(22, 15);
             label19.TabIndex = 16;
             label19.Text = "To:";
             // 
             // user_from_datetimepicker
             // 
             user_from_datetimepicker.Format = DateTimePickerFormat.Short;
-            user_from_datetimepicker.Location = new Point(77, 26);
+            user_from_datetimepicker.Location = new Point(67, 20);
+            user_from_datetimepicker.Margin = new Padding(3, 2, 3, 2);
             user_from_datetimepicker.Name = "user_from_datetimepicker";
-            user_from_datetimepicker.Size = new Size(108, 27);
+            user_from_datetimepicker.Size = new Size(95, 23);
             user_from_datetimepicker.TabIndex = 14;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(25, 33);
+            label18.Location = new Point(22, 25);
             label18.Name = "label18";
-            label18.Size = new Size(46, 20);
+            label18.Size = new Size(38, 15);
             label18.TabIndex = 15;
             label18.Text = "From:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(665, 100);
+            label2.Location = new Point(582, 75);
             label2.Name = "label2";
-            label2.Size = new Size(45, 20);
+            label2.Size = new Size(36, 15);
             label2.TabIndex = 11;
             label2.Text = "Filter:";
             // 
             // user_filter_cb
             // 
             user_filter_cb.FormattingEnabled = true;
-            user_filter_cb.Location = new Point(716, 92);
+            user_filter_cb.Location = new Point(626, 69);
+            user_filter_cb.Margin = new Padding(3, 2, 3, 2);
             user_filter_cb.Name = "user_filter_cb";
-            user_filter_cb.Size = new Size(57, 28);
+            user_filter_cb.Size = new Size(50, 23);
             user_filter_cb.TabIndex = 10;
             // 
             // user_record_listbox
             // 
             user_record_listbox.FormattingEnabled = true;
-            user_record_listbox.Location = new Point(30, 183);
+            user_record_listbox.ItemHeight = 15;
+            user_record_listbox.Location = new Point(26, 137);
+            user_record_listbox.Margin = new Padding(3, 2, 3, 2);
             user_record_listbox.Name = "user_record_listbox";
-            user_record_listbox.Size = new Size(743, 324);
+            user_record_listbox.Size = new Size(651, 244);
             user_record_listbox.TabIndex = 9;
             // 
             // user_search_txtbox
             // 
-            user_search_txtbox.Location = new Point(558, 126);
+            user_search_txtbox.Location = new Point(488, 94);
+            user_search_txtbox.Margin = new Padding(3, 2, 3, 2);
             user_search_txtbox.Name = "user_search_txtbox";
             user_search_txtbox.PlaceholderText = "Search";
-            user_search_txtbox.Size = new Size(215, 27);
+            user_search_txtbox.Size = new Size(189, 23);
             user_search_txtbox.TabIndex = 7;
             // 
             // btn_cancel
@@ -480,7 +559,7 @@
             textBox8.Location = new Point(138, 36);
             textBox8.Name = "textBox8";
             textBox8.PlaceholderText = "Surname";
-            textBox8.Size = new Size(164, 27);
+            textBox8.Size = new Size(164, 23);
             textBox8.TabIndex = 18;
             // 
             // label9
@@ -497,7 +576,7 @@
             textBox7.Location = new Point(138, 206);
             textBox7.Name = "textBox7";
             textBox7.PlaceholderText = "Complete Address";
-            textBox7.Size = new Size(255, 27);
+            textBox7.Size = new Size(255, 23);
             textBox7.TabIndex = 32;
             // 
             // textBox1
@@ -505,7 +584,7 @@
             textBox1.Location = new Point(138, 69);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "First Name";
-            textBox1.Size = new Size(164, 27);
+            textBox1.Size = new Size(164, 23);
             textBox1.TabIndex = 20;
             // 
             // label8
@@ -531,7 +610,7 @@
             textBox6.Location = new Point(138, 241);
             textBox6.Name = "textBox6";
             textBox6.PlaceholderText = "Business";
-            textBox6.Size = new Size(255, 27);
+            textBox6.Size = new Size(255, 23);
             textBox6.TabIndex = 30;
             // 
             // textBox3
@@ -539,7 +618,7 @@
             textBox3.Location = new Point(138, 102);
             textBox3.Name = "textBox3";
             textBox3.PlaceholderText = "Middle Initial";
-            textBox3.Size = new Size(164, 27);
+            textBox3.Size = new Size(164, 23);
             textBox3.TabIndex = 22;
             // 
             // label7
@@ -565,7 +644,7 @@
             textBox5.Location = new Point(138, 173);
             textBox5.Name = "textBox5";
             textBox5.PlaceholderText = "Contact No.";
-            textBox5.Size = new Size(164, 27);
+            textBox5.Size = new Size(164, 23);
             textBox5.TabIndex = 28;
             // 
             // suffix_comboBox
@@ -573,7 +652,7 @@
             suffix_comboBox.FormattingEnabled = true;
             suffix_comboBox.Location = new Point(138, 139);
             suffix_comboBox.Name = "suffix_comboBox";
-            suffix_comboBox.Size = new Size(67, 28);
+            suffix_comboBox.Size = new Size(67, 23);
             suffix_comboBox.TabIndex = 24;
             // 
             // label6
@@ -603,72 +682,17 @@
             label10.TabIndex = 17;
             label10.Text = "Surname:";
             // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, clearAllToolStripMenuItem, cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, deleteToolStripMenuItem, selectAllToolStripMenuItem });
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(49, 24);
-            editToolStripMenuItem.Text = "Edit";
-            // 
-            // clearAllToolStripMenuItem
-            // 
-            clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
-            clearAllToolStripMenuItem.Size = new Size(154, 26);
-            clearAllToolStripMenuItem.Text = "Clear All";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(154, 26);
-            deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // cutToolStripMenuItem
-            // 
-            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            cutToolStripMenuItem.Size = new Size(154, 26);
-            cutToolStripMenuItem.Text = "Cut";
-            // 
-            // copyToolStripMenuItem
-            // 
-            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.Size = new Size(154, 26);
-            copyToolStripMenuItem.Text = "Copy";
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            selectAllToolStripMenuItem.Size = new Size(154, 26);
-            selectAllToolStripMenuItem.Text = "Select All";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            pasteToolStripMenuItem.Size = new Size(154, 26);
-            pasteToolStripMenuItem.Text = "Paste";
-            // 
-            // undoToolStripMenuItem
-            // 
-            undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            undoToolStripMenuItem.Size = new Size(154, 26);
-            undoToolStripMenuItem.Text = "Undo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            redoToolStripMenuItem.Size = new Size(154, 26);
-            redoToolStripMenuItem.Text = "Redo";
-            // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(911, 714);
+            ClientSize = new Size(797, 536);
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form2";
             Text = "Form2";
-            Load += Form2_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             tabControl1.ResumeLayout(false);
