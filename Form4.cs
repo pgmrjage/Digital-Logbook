@@ -21,10 +21,14 @@ namespace WinFormsApp1
         private void LoadContent(Control content)
         {
             panelMain.Controls.Clear();
-            panelMain.Dock = DockStyle.Fill;
+            //panelMain.Dock = DockStyle.Fill;
             panelMain.Controls.Add(content);
 
         }
+
+
+        
+
 
         private void load_form1()
         {
@@ -115,12 +119,15 @@ namespace WinFormsApp1
                 return btn;
             }
 
-            Panel dashboardPanel = new Panel { };
+            Panel dashboardPanel = new Panel { Dock = DockStyle.Top };
             dashboardPanel.Controls.Add(new Label
-            {
+            {               
+                Height = 50,
                 Text = "Dashboard Page",
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Century Gothic", 24),
+                BackColor = Color.Red,
+                Dock = DockStyle.Top,
+                TextAlign = ContentAlignment.MiddleLeft,
 
             });
             Panel createNewPanel = new Panel { };
@@ -139,14 +146,60 @@ namespace WinFormsApp1
                 TextAlign = ContentAlignment.MiddleCenter,
 
             });
-            Panel aboutPanel = new Panel { };
-            aboutPanel.Controls.Add(new Label
-            {
-                Text = "About Us Page",
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
 
-            });
+
+
+
+            //ABOUT US
+            Panel aboutPanel = new Panel { 
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+            };
+
+            Label aboutHeader = new Label {
+                Height = 50,
+                Font = new Font("Century Gothic", 24, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Text = "About Us",
+                BackColor = Color.Red,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(20,0,0,0) // top, left, bottom, right
+            };
+
+            aboutPanel.Controls.Add(aboutHeader);
+
+
+
+
+            Button abouttest = new Button {
+                Location = new Point(50, 70),
+                Height = 25,
+                Width = 75,
+                Text = "OK",
+                TextAlign = ContentAlignment.MiddleCenter,
+            };
+            aboutPanel.Controls.Add(abouttest);
+
+
+            //aboutPanel.Controls.Add(new Label
+            //{
+            //    Height = 50,
+            //    Font = new Font("Century Gothic", 24),
+            //    BackColor = Color.Red,
+            //    Text = "About Us Page",
+            //    Dock = DockStyle.Top,
+            //    TextAlign = ContentAlignment.MiddleLeft,
+            //});
+
+            Label aboutContent = new Label
+            {
+                Text = "Page is under Maintenance",
+                Dock = DockStyle.Fill,                
+                TextAlign = ContentAlignment.MiddleCenter,
+            };
+
+            aboutPanel.Controls.Add(aboutContent);
+
            
             
 
