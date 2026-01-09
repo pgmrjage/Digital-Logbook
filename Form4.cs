@@ -144,7 +144,7 @@ namespace WinFormsApp1
 
 
 
-            TableLayoutPanel admin_layout = new TableLayoutPanel()
+            TableLayoutPanel admin_layout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 RowCount = 2,
@@ -153,21 +153,36 @@ namespace WinFormsApp1
             admin_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
 
 
-            FlowLayoutPanel f1 = new FlowLayoutPanel()
+            FlowLayoutPanel f1 = new FlowLayoutPanel
             {
-                Name = "admin_dashboard_flowlayoutpanel1",
                 Dock = DockStyle.Fill,
+                Height =150,
                 BackColor = Color.DarkCyan,
+                FlowDirection = FlowDirection.TopDown,  // Optional for vertical stacking
+                Padding = new Padding(20)
             };
-            dashboardPanel.Controls.Add(f1);
-            
+
+            Label f1_header = new Label()
+            {
+                AutoSize = true,
+                Text = "Dashboard Header",
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 16, FontStyle.Bold)
+            };
+
+            f1.Controls.Add(f1_header);
+
+
+
+
+
             FlowLayoutPanel f2 = new FlowLayoutPanel()
             {
                 Name = "admin_dashboard_flowlayoutpanel2",
                 Dock = DockStyle.Fill,
                 BackColor = Color.DarkRed,
             };
-            dashboardPanel.Controls.Add(f2);
+            //dashboardPanel.Controls.Add(f2);
 
                                                
 
