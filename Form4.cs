@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -119,17 +120,74 @@ namespace WinFormsApp1
                 return btn;
             }
 
-            Panel dashboardPanel = new Panel { Dock = DockStyle.Top };
-            dashboardPanel.Controls.Add(new Label
-            {               
-                Height = 50,
-                Text = "Dashboard Page",
-                Font = new Font("Century Gothic", 24),
-                BackColor = Color.Red,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleLeft,
 
-            });
+            // DASHBOARD SECTION
+            //========================================================================
+            Panel dashboardPanel = new Panel {
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+            };
+
+            Label dashboard_Header = new Label
+            {
+                Height = 50,
+                Dock = DockStyle.Top,
+                Text = "Dashboard",
+                Font = new Font("Century Gothic", 24),
+                ForeColor = Color.Black,
+                //BackColor = Color.Red,                    //just testing
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(15,10,0,0)
+            };
+            dashboardPanel.Controls.Add(dashboard_Header); //Call 
+
+
+
+
+            TableLayoutPanel admin_layout = new TableLayoutPanel()
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 2,
+            };
+            admin_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+            admin_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+
+
+            FlowLayoutPanel f1 = new FlowLayoutPanel()
+            {
+                Name = "admin_dashboard_flowlayoutpanel1",
+                Dock = DockStyle.Fill,
+                BackColor = Color.DarkCyan,
+            };
+            dashboardPanel.Controls.Add(f1);
+            
+            FlowLayoutPanel f2 = new FlowLayoutPanel()
+            {
+                Name = "admin_dashboard_flowlayoutpanel2",
+                Dock = DockStyle.Fill,
+                BackColor = Color.DarkRed,
+            };
+            dashboardPanel.Controls.Add(f2);
+
+                                               
+
+            admin_layout.Controls.Add(f1, 0, 0);
+            admin_layout.Controls.Add(f2, 0, 1);
+
+            dashboardPanel.Controls.Add(admin_layout);
+
+
+
+            
+
+            //========================================================================
+
+
+
+
+
+
+
             Panel createNewPanel = new Panel { };
             createNewPanel.Controls.Add(new Label
             {
@@ -149,7 +207,7 @@ namespace WinFormsApp1
 
 
 
-
+            
             //ABOUT US
             Panel aboutPanel = new Panel { 
                 Dock = DockStyle.Fill,
@@ -237,13 +295,13 @@ namespace WinFormsApp1
             //===========================================================================
             // DEPARTMENT CHECKBOX
             //===========================================================================
-            admin_department_cb.DropDownStyle =  ComboBoxStyle.DropDownList; //set dafault comboBox into dropdown list
-            //Tabpage 1: Department
-            string[] department = { "", "Tanod", "SK", "Lupon", "Health Center", "Social Worker", "BCPC" };
-            foreach (string department_index in department)
-            {
-                admin_department_cb.Items.Add(department_index);
-            }
+            //admin_department_cb.DropDownStyle =  ComboBoxStyle.DropDownList; //set dafault comboBox into dropdown list
+            ////Tabpage 1: Department
+            //string[] department = { "", "Tanod", "SK", "Lupon", "Health Center", "Social Worker", "BCPC" };
+            //foreach (string department_index in department)
+            //{
+            //    admin_department_cb.Items.Add(department_index);
+            //}
             //===========================================================================
 
 
@@ -252,21 +310,21 @@ namespace WinFormsApp1
             // DATE ENCODE CHECKBOX
             //===========================================================================
             //Tabpage 1: Set dateEncode to false
-            admin_dateEncode_gb.Enabled = false;
+            //admin_dateEncode_gb.Enabled = false;
             //===========================================================================
 
             //===========================================================================
             // ADMIN FILTER RECORD COMBOBOX
             //===========================================================================
-            admin_filter_cb.DropDownStyle = ComboBoxStyle.DropDownList;  //set default comboBox into dropdown List
+            //admin_filter_cb.DropDownStyle = ComboBoxStyle.DropDownList;  //set default comboBox into dropdown List
             
-            int[] filter = { 5, 10, 15, 20, };
-            foreach (int filter_index in filter)
-            {
-                admin_filter_cb.Items.Add(filter_index);
-            }
-            admin_filter_cb.Items.Add("All");
-            admin_filter_cb.SelectedIndex = 0;
+            //int[] filter = { 5, 10, 15, 20, };
+            //foreach (int filter_index in filter)
+            //{
+            //    admin_filter_cb.Items.Add(filter_index);
+            //}
+            //admin_filter_cb.Items.Add("All");
+            //admin_filter_cb.SelectedIndex = 0;
             //===========================================================================
 
 
@@ -281,16 +339,16 @@ namespace WinFormsApp1
 
 
        
-        private void createToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form3 f3 = new Form3();
-            this.Hide();
-            f3.Show();
-        }
+        //private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    Form3 f3 = new Form3();
+        //    this.Hide();
+        //    f3.Show();
+        //}
 
-        private void admin_dateEncode_cb_CheckedChanged(object sender, EventArgs e)
-        {
-            admin_dateEncode_gb.Enabled = admin_dateEncode_cb.Checked;
-        }
+        //private void admin_dateEncode_cb_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    admin_dateEncode_gb.Enabled = admin_dateEncode_cb.Checked;
+        //}
     }
 }

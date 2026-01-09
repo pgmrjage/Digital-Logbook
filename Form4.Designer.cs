@@ -496,7 +496,7 @@
             admin_dateEncode_cb.TabIndex = 32;
             admin_dateEncode_cb.Text = "Date Encoded:";
             admin_dateEncode_cb.UseVisualStyleBackColor = true;
-            admin_dateEncode_cb.CheckedChanged += admin_dateEncode_cb_CheckedChanged;
+            //admin_dateEncode_cb.CheckedChanged += admin_dateEncode_cb_CheckedChanged;
             // 
             // admin_dateEncode_gb
             // 
@@ -821,7 +821,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(816, 749);
+            ClientSize = new Size(829, 749);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form4";
