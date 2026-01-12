@@ -81,19 +81,19 @@ namespace WinFormsApp1
 
             // ------------ DASHBOARD ------------------
             Panel dashboardPanel = CreateDashboardContent();
-
+            Panel createnewPanel = CreateNewPanel();
 
             // Sidebar button (REVERSE ORDER)
             Button btnLogoout = CreateSidebarButton("Logout");
-            btnLogoout.Click += (s, e) => LoadContent(dashboardPanel);
+            //btnLogoout.Click += (s, e) => LoadContent(dashboardPanel);
             panelSidebar.Controls.Add(btnLogoout);
 
             Button btnAbout = CreateSidebarButton("About Us");
-            btnAbout.Click += (s, e) => LoadContent(dashboardPanel);
+            //btnAbout.Click += (s, e) => LoadContent();
             panelSidebar.Controls.Add(btnAbout);
 
             Button btnCreate = CreateSidebarButton("Create New");
-            btnCreate.Click += (s, e) => LoadContent(dashboardPanel);
+            btnCreate.Click += (s, e) => LoadContent(createnewPanel);
             panelSidebar.Controls.Add(btnCreate);
 
             Button btnDashboard = CreateSidebarButton("Dashboard");
@@ -180,14 +180,28 @@ namespace WinFormsApp1
                 Padding = new Padding(10, 0, 0, 0)
             };
 
+
+            Panel testpanel = new Panel
+            {
+                Padding = new Padding(10, 10, 10, 10),
+                Dock = DockStyle.Top,
+                BackColor = Color.Yellow,
+                
+            };
+
+
             // Add some test content to see if it's working
             Label testLabel = new Label
             {
                 Text = "This is the dashboard content",
                 Font = new Font("Segoe UI", 12),
-                Location = new Point(50, 80),
-                AutoSize = true
+                TextAlign = ContentAlignment.MiddleCenter,
+                AutoSize = true,
+                //Location = new Point(50, 80),
+                //AutoSize = true
             };
+
+
 
 
             //reverse order?? form bot to top
@@ -198,11 +212,47 @@ namespace WinFormsApp1
             headerPanel.Controls.Add(headerLabel);
             dashboardPanel.Controls.Add(headerPanel);
             dashboardPanel.Controls.Add(testLabel);
+            dashboardPanel.Controls.Add(testpanel);
 
             return dashboardPanel;
         }
-        
 
+
+        // =========================
+        // Create New Panel
+        // =========================
+        private Panel CreateNewPanel()
+        {
+            Panel createnew = new Panel()
+            {
+                BackColor = Color.White,
+                Dock = DockStyle.Fill,
+            };
+
+            Panel headerPanel = new Panel
+            {
+                Dock = DockStyle.Top,
+                Height = 60,
+                BackColor = Color.DarkBlue,
+            };
+
+            Label headerLabel = new Label
+            {
+                Text = "Create New",
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+                Font = new Font("Century Gothic", 24),
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(10, 0, 0, 0)
+            };
+
+
+            headerPanel.Controls.Add(headerLabel);
+            createnew.Controls.Add(headerPanel);
+
+            return createnew;
+
+        }
 
         
 
