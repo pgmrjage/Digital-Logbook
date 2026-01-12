@@ -31,7 +31,7 @@ namespace WinFormsApp1
         {
 
             // ------------ MAIN PANEL ------------------
-            Panel panelMain = new Panel
+            panelMain = new Panel
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White,
@@ -45,7 +45,7 @@ namespace WinFormsApp1
                 Width = 200,
                 BackColor = Color.FromArgb(30,30,30),
             }; this.Controls.Add(panelSidebar);
-            panelSidebar.BringToFront();
+            //panelSidebar.BringToFront();      // somewhat bug due to hiding the content behind it
 
             Label lblTitle = new Label
             {
@@ -56,6 +56,18 @@ namespace WinFormsApp1
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
             }; panelSidebar.Controls.Add(lblTitle);
+
+            Label lblFooter = new Label
+            {
+                Text = "© 2026 Decode. All Right Reserved",
+                Dock= DockStyle.Bottom,
+                Height = 25,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Margin = new Padding (0,0,0,30),
+               
+            };  panelSidebar.Controls.Add(lblFooter);
 
 
             Panel Separator = new Panel
@@ -70,14 +82,35 @@ namespace WinFormsApp1
             // ------------ DASHBOARD ------------------
             Panel dashboardPanel = CreateDashboardContent();
 
-            // Sidebar button
+
+            // Sidebar button (REVERSE ORDER)
+            Button btnLogoout = CreateSidebarButton("Logout");
+            btnLogoout.Click += (s, e) => LoadContent(dashboardPanel);
+            panelSidebar.Controls.Add(btnLogoout);
+
+            Button btnAbout = CreateSidebarButton("About Us");
+            btnAbout.Click += (s, e) => LoadContent(dashboardPanel);
+            panelSidebar.Controls.Add(btnAbout);
+
+            Button btnCreate = CreateSidebarButton("Create New");
+            btnCreate.Click += (s, e) => LoadContent(dashboardPanel);
+            panelSidebar.Controls.Add(btnCreate);
+
             Button btnDashboard = CreateSidebarButton("Dashboard");
             btnDashboard.Click += (s, e) => LoadContent(dashboardPanel);
             panelSidebar.Controls.Add(btnDashboard);
+
+            
+
+            
+
+
+
+
         }
 
 
-         // =========================
+        // =========================
         // Content Loader
         // =========================
         private void LoadContent(Control content)
@@ -86,44 +119,6 @@ namespace WinFormsApp1
             content.Dock = DockStyle.Fill;
             panelMain.Controls.Add(content);
         }
-
-
-
-        // =========================
-        // Dashboard Panel
-        // =========================
-        private Panel CreateDashboardContent()
-        {
-            Panel dashboardPanel = new Panel
-            {
-                BackColor = Color.Red, 
-                Padding = new Padding(10),
-            };
-
-            Panel headerPanel = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 60,
-                BackColor= Color.DarkBlue,
-            };
-
-            Label headerLabel = new Label
-            {
-                Text = "Dashboard",
-                Dock= DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Century Gothic", 24),
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(15, 0, 0, 0)
-            };
-
-            headerPanel.Controls.Add(headerLabel);
-            dashboardPanel.Controls.Add(headerPanel);
-
-            return dashboardPanel;
-        }
-
-
 
         // =========================
         // Sidebar Button Factory
@@ -156,6 +151,63 @@ namespace WinFormsApp1
 
 
 
+        // =========================
+        // Dashboard Panel
+        // =========================
+        private Panel CreateDashboardContent()
+        {
+            Panel dashboardPanel = new Panel
+            {
+                BackColor = Color.White,
+                Dock = DockStyle.Fill,
+                //Padding = new Padding(10),
+            };
+
+            Panel headerPanel = new Panel
+            {
+                Dock = DockStyle.Top,   
+                Height = 60,
+                BackColor= Color.DarkBlue,
+            };
+
+            Label headerLabel = new Label
+            {
+                Text = "Dashboard",
+                Dock= DockStyle.Fill,
+                ForeColor = Color.White,
+                Font = new Font("Century Gothic", 24),
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(10, 0, 0, 0)
+            };
+
+            // Add some test content to see if it's working
+            Label testLabel = new Label
+            {
+                Text = "This is the dashboard content",
+                Font = new Font("Segoe UI", 12),
+                Location = new Point(50, 80),
+                AutoSize = true
+            };
+
+
+            //reverse order?? form bot to top
+            //headerPanel.Controls.Add(headerLabel);
+            //dashboardPanel.Controls.Add(headerPanel);
+
+            // Add controls in correct order
+            headerPanel.Controls.Add(headerLabel);
+            dashboardPanel.Controls.Add(headerPanel);
+            dashboardPanel.Controls.Add(testLabel);
+
+            return dashboardPanel;
+        }
+        
+
+
+        
+
+
+
         private void load_form1()
         {
             Form1 f1 = new Form1();
@@ -183,24 +235,5 @@ namespace WinFormsApp1
         
 
 
-
-
-
-
-
-
-
-
-        //private void createToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    Form3 f3 = new Form3();
-        //    this.Hide();
-        //    f3.Show();
-        //}
-
-        //private void admin_dateEncode_cb_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    admin_dateEncode_gb.Enabled = admin_dateEncode_cb.Checked;
-        //}
     }
 }
