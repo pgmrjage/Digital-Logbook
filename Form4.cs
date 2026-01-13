@@ -80,7 +80,7 @@ namespace WinFormsApp1
 
 
             // ------------ DASHBOARD ------------------
-            Panel dashboardPanel = CreateDashboardContent();
+            Panel dashboardPanel = Dashboard_Section();
             Panel createnewPanel = CreateNewPanel();
 
             // Sidebar button (REVERSE ORDER)
@@ -154,23 +154,23 @@ namespace WinFormsApp1
         // =========================
         // Dashboard Panel
         // =========================
-        private Panel CreateDashboardContent()
+        private Panel Dashboard_Section()
         {
-            Panel dashboardPanel = new Panel
+            Panel dashboardPanel = new Panel    //1
             {
                 BackColor = Color.White,
                 Dock = DockStyle.Fill,
                 //Padding = new Padding(10),
             };
 
-            Panel headerPanel = new Panel
+            Panel headerPanel = new Panel       //1.1
             {
                 Dock = DockStyle.Top,   
                 Height = 60,
                 BackColor= Color.DarkBlue,
             };
 
-            Label headerLabel = new Label
+            Label headerLabel = new Label       //1.2
             {
                 Text = "Dashboard",
                 Dock= DockStyle.Fill,
@@ -180,19 +180,51 @@ namespace WinFormsApp1
                 Padding = new Padding(10, 0, 0, 0)
             };
 
-
-            Panel testpanel = new Panel
+            Panel dashmain = new Panel         //2
             {
-                Padding = new Padding(10, 10, 10, 10),
-                Dock = DockStyle.Top,
+                Padding = new Padding(20, 20, 20, 20),
+                Dock = DockStyle.Fill,
                 BackColor = Color.Yellow,
-                
             };
+
+            TableLayoutPanel dashmain_layout = new TableLayoutPanel     //2.1
+            {
+                RowCount = 1,
+                ColumnCount = 2,
+                Dock = DockStyle.Fill,
+                BackColor = Color.Aqua,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
+                //Padding = new Padding (20,20,20,20),
+            };
+                        
+            dashmain_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            dashmain_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+
+            Panel dashmain_layout_box = new Panel
+            {
+                //Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(30,30,30),
+                Height = 50,
+                Width = 50,
+                Margin = new Padding (20, 20, 20, 20),
+            };
+
+            // ------ DASH FOOTER --------
+
+            TableLayoutPanel testinglayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Bottom,
+                BackColor = Color.Green,
+            };
+
+
+
 
 
             // Add some test content to see if it's working
             Label testLabel = new Label
             {
+                Dock = DockStyle.Fill,
                 Text = "This is the dashboard content",
                 Font = new Font("Segoe UI", 12),
                 TextAlign = ContentAlignment.MiddleCenter,
@@ -204,15 +236,21 @@ namespace WinFormsApp1
 
 
 
-            //reverse order?? form bot to top
-            //headerPanel.Controls.Add(headerLabel);
-            //dashboardPanel.Controls.Add(headerPanel);
+            
 
             // Add controls in correct order
+
+            
+            //1
             headerPanel.Controls.Add(headerLabel);
-            dashboardPanel.Controls.Add(headerPanel);
-            dashboardPanel.Controls.Add(testLabel);
-            dashboardPanel.Controls.Add(testpanel);
+            dashboardPanel.Controls.Add(headerPanel); //show
+
+            //2
+            dashmain_layout.Controls.Add(dashmain_layout_box);
+            dashmain.Controls.Add(dashmain_layout);
+            dashboardPanel.Controls.Add(dashmain);  //show
+
+
 
             return dashboardPanel;
         }
