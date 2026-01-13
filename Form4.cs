@@ -47,15 +47,29 @@ namespace WinFormsApp1
             }; this.Controls.Add(panelSidebar);
             //panelSidebar.BringToFront();      // somewhat bug due to hiding the content behind it
 
+            Panel Separatorbot = new Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 1,
+                BackColor = Color.FromArgb(50, 50, 50),
+            }; panelSidebar.Controls.Add(Separatorbot);
+
             Label lblTitle = new Label
             {
                 Text = "ADMIN",
-                Dock = DockStyle.Top,
+                Dock = DockStyle.Bottom,
                 Height = 60,
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
             }; panelSidebar.Controls.Add(lblTitle);
+
+            Panel Separatorbot1 = new Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 1,
+                BackColor = Color.FromArgb(50, 50, 50),
+            }; panelSidebar.Controls.Add(Separatorbot1);
 
             Label lblFooter = new Label
             {
@@ -76,7 +90,8 @@ namespace WinFormsApp1
                 Height = 1,
                 BackColor = Color.FromArgb(50,50,50),
             }; panelSidebar.Controls.Add(Separator);
-
+            
+            
 
 
             // ------------ DASHBOARD ------------------
@@ -182,8 +197,8 @@ namespace WinFormsApp1
 
             Panel dashmain = new Panel         //2
             {
-                Padding = new Padding(20, 20, 20, 20),
                 Dock = DockStyle.Fill,
+                Padding = new Padding(20, 20, 20, 20),                
                 BackColor = Color.Yellow,
             };
 
@@ -204,14 +219,14 @@ namespace WinFormsApp1
             {
                 //Dock = DockStyle.Fill,
                 BackColor = Color.FromArgb(30,30,30),
-                Height = 50,
-                Width = 50,
+                Height = 150,
+                Width = 250,
                 Margin = new Padding (20, 20, 20, 20),
             };
 
             // ------ DASH FOOTER --------
 
-            TableLayoutPanel testinglayout = new TableLayoutPanel
+            TableLayoutPanel footer = new TableLayoutPanel
             {
                 Dock = DockStyle.Bottom,
                 BackColor = Color.Green,
@@ -236,21 +251,23 @@ namespace WinFormsApp1
 
 
 
-            
+
 
             // Add controls in correct order
 
-            
-            //1
-            headerPanel.Controls.Add(headerLabel);
-            dashboardPanel.Controls.Add(headerPanel); //show
 
             //2
             dashmain_layout.Controls.Add(dashmain_layout_box);
             dashmain.Controls.Add(dashmain_layout);
-            dashboardPanel.Controls.Add(dashmain);  //show
+            dashboardPanel.Controls.Add(dashmain);  //show in dashboard
 
 
+            //1
+            headerPanel.Controls.Add(headerLabel);
+            dashboardPanel.Controls.Add(headerPanel); //show in dashboard
+
+            //3 - footer
+            dashboardPanel.Controls.Add(footer);
 
             return dashboardPanel;
         }
