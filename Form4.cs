@@ -204,18 +204,24 @@ namespace WinFormsApp1
 
             TableLayoutPanel dashmain_layout = new TableLayoutPanel     //2.1
             {
-                RowCount = 1,
-                ColumnCount = 2,
+                RowCount = 2,
+                ColumnCount = 1,
                 Dock = DockStyle.Fill,
                 BackColor = Color.Aqua,
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
                 //Padding = new Padding (20,20,20,20),
             };
-                        
-            dashmain_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            dashmain_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
 
-            Panel dashmain_layout_box = new Panel
+            FlowLayoutPanel dashmain_box_layout = new FlowLayoutPanel{
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+
+            };
+                        
+            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 17));
+            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+
+            Panel box = new Panel
             {
                 //Dock = DockStyle.Fill,
                 BackColor = Color.FromArgb(30,30,30),
@@ -223,6 +229,17 @@ namespace WinFormsApp1
                 Width = 250,
                 Margin = new Padding (20, 20, 20, 20),
             };
+
+            Panel box1 = new Panel
+            {
+                //Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Height = 150,
+                Width = 250,
+                Margin = new Padding(20, 20, 20, 20),
+            };
+
+
 
             // ------ DASH FOOTER --------
 
@@ -257,9 +274,13 @@ namespace WinFormsApp1
 
 
             //2
-            dashmain_layout.Controls.Add(dashmain_layout_box);
+            dashboardPanel.Controls.Add(dashmain);
             dashmain.Controls.Add(dashmain_layout);
-            dashboardPanel.Controls.Add(dashmain);  //show in dashboard
+            dashmain_layout.Controls.Add(dashmain_box_layout);
+            dashmain_box_layout.Controls.Add(box);
+            dashmain_box_layout.Controls.Add(box1);
+            //dashmain.Controls.Add(dashmain_layout);
+            //dashboardPanel.Controls.Add(dashmain);  //show in dashboard
 
 
             //1
