@@ -221,22 +221,46 @@ namespace WinFormsApp1
             dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 17));
             dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
 
-            Panel box = new Panel
+            FlowLayoutPanel box = new FlowLayoutPanel
             {
                 //Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
                 BackColor = Color.FromArgb(30,30,30),
                 Height = 150,
                 Width = 250,
                 Margin = new Padding (20, 20, 20, 20),
             };
 
-            Panel box1 = new Panel
+            
+
+            Panel counts_container = new Panel {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+            };
+
+            Panel numeric_container = new Panel
             {
-                //Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb(30, 30, 30),
-                Height = 150,
-                Width = 250,
-                Margin = new Padding(20, 20, 20, 20),
+                Dock = DockStyle.Top,
+                AutoSize = true,
+            };
+
+            //Details inside the Box
+            Label counts = new Label
+            {
+                ForeColor = Color.White,
+                AutoSize = true,
+                Font = new Font("Century Gothic", 16),
+                Text = "Counts",
+                TextAlign = ContentAlignment.MiddleCenter,
+            };
+
+            Label numeric = new Label
+            {
+                ForeColor = Color.White,
+                AutoSize = true,
+                Font = new Font("Century Gothic", 48),
+                Text = "240",
+                TextAlign = ContentAlignment.MiddleCenter,
             };
 
 
@@ -278,7 +302,11 @@ namespace WinFormsApp1
             dashmain.Controls.Add(dashmain_layout);
             dashmain_layout.Controls.Add(dashmain_box_layout);
             dashmain_box_layout.Controls.Add(box);
-            dashmain_box_layout.Controls.Add(box1);
+            box.Controls.Add(counts_container);
+            box.Controls.Add(numeric_container);
+            counts_container.Controls.Add(counts);
+            numeric_container.Controls.Add(numeric);
+            //box.Controls.Add(box_content);
             //dashmain.Controls.Add(dashmain_layout);
             //dashboardPanel.Controls.Add(dashmain);  //show in dashboard
 
