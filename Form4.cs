@@ -212,14 +212,25 @@ namespace WinFormsApp1
                 //Padding = new Padding (20,20,20,20),
             };
 
+            // This is the layoutbox for box content including counts and numeric
             FlowLayoutPanel dashmain_box_layout = new FlowLayoutPanel{
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.LeftToRight,
 
             };
-                        
-            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 17));
-            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+
+            // This is the layoutbox for record including searchbox and listbox
+            Panel records_box_layout = new Panel
+            {
+                Dock = DockStyle.Fill,
+            };
+            
+            dashmain_layout.RowStyles.Clear();
+            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
+            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
+
+
+            // First Container Section
 
             FlowLayoutPanel box = new FlowLayoutPanel
             {
@@ -264,6 +275,35 @@ namespace WinFormsApp1
             };
 
 
+            // Second Container Section
+
+            Panel container = new Panel
+            {
+                Dock = DockStyle.Fill,
+            };
+            Panel searchbox_container = new Panel
+            {
+                Dock = DockStyle.Top,
+            };
+            Panel record_container = new Panel
+            {
+                Dock = DockStyle.Top,
+            };
+
+
+            TextBox searchbox = new TextBox
+            {
+                Dock = DockStyle.None,
+                Height = 50,
+                PlaceholderText = "Search",
+            };
+
+            ListBox records = new ListBox
+            {
+                Height = 200,
+                Width = 200,
+            };
+
 
             // ------ DASH FOOTER --------
 
@@ -300,12 +340,24 @@ namespace WinFormsApp1
             //2
             dashboardPanel.Controls.Add(dashmain);
             dashmain.Controls.Add(dashmain_layout);
-            dashmain_layout.Controls.Add(dashmain_box_layout);
+            dashmain_layout.Controls.Add(dashmain_box_layout, 0,0);
             dashmain_box_layout.Controls.Add(box);
             box.Controls.Add(counts_container);
             box.Controls.Add(numeric_container);
             counts_container.Controls.Add(counts);
             numeric_container.Controls.Add(numeric);
+
+            //Function call for Records
+
+            //dashboardPanel.Controls.Add(dashmain);
+            //dashmain.Controls.Add(dashmain_layout);
+            dashmain_layout.Controls.Add(records_box_layout, 0, 1); 
+            records_box_layout.Controls.Add(container);
+            container.Controls.Add(record_container);
+            container.Controls.Add(searchbox_container);            
+            searchbox_container.Controls.Add(searchbox);
+            record_container.Controls.Add(records);
+
             //box.Controls.Add(box_content);
             //dashmain.Controls.Add(dashmain_layout);
             //dashboardPanel.Controls.Add(dashmain);  //show in dashboard
