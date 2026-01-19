@@ -97,6 +97,7 @@ namespace WinFormsApp1
             // ------------ DASHBOARD ------------------
             Panel dashboardPanel = Dashboard_Section();
             Panel createnewPanel = CreateNewPanel();
+            Panel aboutPanel = About_Section();
 
             // Sidebar button (REVERSE ORDER)
             Button btnLogoout = CreateSidebarButton("Logout");
@@ -104,7 +105,7 @@ namespace WinFormsApp1
             panelSidebar.Controls.Add(btnLogoout);
 
             Button btnAbout = CreateSidebarButton("About Us");
-            //btnAbout.Click += (s, e) => LoadContent();
+            btnAbout.Click += (s, e) => LoadContent(aboutPanel);
             panelSidebar.Controls.Add(btnAbout);
 
             Button btnCreate = CreateSidebarButton("Create New");
@@ -465,7 +466,76 @@ namespace WinFormsApp1
 
         }
 
+
+        // =========================
+        // About Us
+        // =========================
+        private Panel About_Section()
+        {
+            Panel about_main = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.Fuchsia,
+                Padding = new Padding (20,20,20,20),
+            };
+
+            //-------------------- HEADER --------------------
+            Panel headerPanel = new Panel
+            {
+                Dock = DockStyle.Top,
+                Height = 60,
+                BackColor = Color.DarkBlue,
+            };
+
+            Label headerLabel = new Label
+            {
+                Text = "About Us",
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+                Font = new Font("Century Gothic", 24),
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(10, 0, 0, 0)
+            };       
+
+            headerPanel.Controls.Add(headerLabel);
+
+            //----------------------------------------------
+
+
+            //-------------------- BODY --------------------
+
+            Panel body_container = new Panel
+            {   
+                Dock = DockStyle.Fill,
+                BackColor = Color.Bisque,
+                Padding = new Padding (20,20,20,20),
+            };
+
+            FlowLayoutPanel body_layout = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                BackColor = Color.Azure,
+            };
+            body_container.Controls.Add(body_layout);
+
+
+
+            about_main.Controls.Add(body_container);
+            about_main.Controls.Add(headerPanel);
+
+            //----------------------------------------------
+
+
+
+            return about_main;
+        }
+
         
+
+
+        
+
 
 
 
