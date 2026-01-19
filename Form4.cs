@@ -254,6 +254,13 @@ namespace WinFormsApp1
                 Dock = DockStyle.Top,
                 AutoSize = true,
             };
+            Panel actionBtn_container = new Panel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+            };
+
+            
 
             //Details inside the Box
             Label counts = new Label
@@ -280,14 +287,17 @@ namespace WinFormsApp1
             Panel container = new Panel
             {
                 Dock = DockStyle.Fill,
+                Padding = new Padding (20, 20, 20, 20),
             };
             Panel searchbox_container = new Panel
             {
                 Dock = DockStyle.Top,
+                Height = 50,
             };
             Panel record_container = new Panel
             {
                 Dock = DockStyle.Top,
+                Height = 200,
             };
 
 
@@ -300,8 +310,9 @@ namespace WinFormsApp1
 
             ListBox records = new ListBox
             {
+                Dock = DockStyle.None,
                 Height = 200,
-                Width = 200,
+                Width = 1000
             };
 
 
@@ -311,9 +322,47 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Bottom,
                 BackColor = Color.Green,
+               
             };
 
+            Panel footer_container = new Panel
+            {
+                Dock = DockStyle.Fill,
+                
+            };
 
+            FlowLayoutPanel buttons_container = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(20, 20, 20, 20),
+                WrapContents = false,
+            };
+
+            Button delete_button = new Button
+            {
+                Text = "Delete",
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30,30,30),
+                Height = 50,
+                Width = 120,
+            };
+            Button edit_button = new Button
+            {
+                Text = "Edit",
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30,30,30),
+                Height = 50,
+                Width = 120,
+            };
+            Button saveAs_button = new Button
+            {
+                Text = "Save As",
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Height = 50,
+                Width = 120,
+            };
 
 
 
@@ -369,6 +418,12 @@ namespace WinFormsApp1
 
             //3 - footer
             dashboardPanel.Controls.Add(footer);
+            footer.Controls.Add(footer_container);
+            footer_container .Controls.Add(buttons_container);
+            buttons_container.Controls.Add(delete_button);
+            buttons_container.Controls.Add(edit_button);
+            buttons_container.Controls.Add(saveAs_button);
+
 
             return dashboardPanel;
         }
