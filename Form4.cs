@@ -494,78 +494,77 @@ namespace WinFormsApp1
                 Font = new Font("Century Gothic", 24),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Padding = new Padding(10, 0, 0, 0)
-            };       
+            };
 
             headerPanel.Controls.Add(headerLabel);
-
-            //----------------------------------------------
-
 
             //-------------------- BODY --------------------
 
             Panel body_container = new Panel
-            {   
-                Dock = DockStyle.Fill,
-                BackColor = Color.Bisque,
-                Padding = new Padding (20,20,20,20),
-            };
-
-            FlowLayoutPanel body_layout = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.LeftToRight,
-                BackColor = Color.Red,
-                WrapContents = false,
+                BackColor = Color.Bisque,
+                Padding = new Padding(20),
             };
-            
 
             //---------------------- LEFT ----------------------
             Panel left_content_container = new Panel
-            {                
-                Width = 300,
-                Height = 300,
+            {
+                Dock = DockStyle.Fill,
                 BackColor = Color.Chartreuse,
             };
 
             FlowLayoutPanel content = new FlowLayoutPanel
-            {                               
+            {
                 FlowDirection = FlowDirection.TopDown,
-                AutoSize = true,
-                WrapContents = false,
+                Dock = DockStyle.Fill,
+                WrapContents = false
             };
+
             Label left_header = new Label
-            {   
+            {
                 Height = 50,
                 Text = "Left",
                 Font = new Font("Century Gothic", 20),
+                TextAlign = ContentAlignment.MiddleCenter
             };
+
             Label left_paragraph = new Label
             {
-                Dock = DockStyle.Fill,
-                Height = 200,
                 Font = new Font("Century Gothic", 12),
                 Text = "This is a sample paragraph for the About Us. The quick brown fox jumps over a lazy dog.",
+                AutoSize = true
             };
-            body_container.Controls.Add(body_layout);
-            body_layout.Controls.Add(left_content_container);
-            left_content_container.Controls.Add(content);
+
             content.Controls.Add(left_header);
             content.Controls.Add(left_paragraph);
-
+            left_content_container.Controls.Add(content);
 
             //---------------------- RIGHT ----------------------
             Panel right_content_container = new Panel
             {
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                BackColor = Color.LightGray
             };
 
+            //---------------------- BODY LAYOUT ----------------------
+            TableLayoutPanel body_layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 2,
+                BackColor = Color.Red
+            };
+            body_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            body_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
 
-            about_main.Controls.Add(body_container);    //header
-            about_main.Controls.Add(headerPanel);   //body
+            body_layout.Controls.Add(left_content_container, 0, 0);
+            body_layout.Controls.Add(right_content_container, 1, 0);
 
-            //----------------------------------------------
+            body_container.Controls.Add(body_layout);
 
-
+            //---------------------- ADD TO MAIN ----------------------
+            about_main.Controls.Add(headerPanel);
+            about_main.Controls.Add(body_container);
 
             return about_main;
         }
