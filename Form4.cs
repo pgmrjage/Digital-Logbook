@@ -475,8 +475,7 @@ namespace WinFormsApp1
             Panel about_main = new Panel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Fuchsia,
-                Padding = new Padding (20,20,20,20),
+                BackColor = Color.White,
             };
 
             //-------------------- HEADER --------------------
@@ -515,14 +514,54 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.LeftToRight,
-                BackColor = Color.Azure,
+                BackColor = Color.Red,
+                WrapContents = false,
+            };
+            
+
+            //---------------------- LEFT ----------------------
+            Panel left_content_container = new Panel
+            {                
+                Width = 300,
+                Height = 300,
+                BackColor = Color.Chartreuse,
+            };
+
+            FlowLayoutPanel content = new FlowLayoutPanel
+            {                               
+                FlowDirection = FlowDirection.TopDown,
+                AutoSize = true,
+                WrapContents = false,
+            };
+            Label left_header = new Label
+            {   
+                Height = 50,
+                Text = "Left",
+                Font = new Font("Century Gothic", 20),
+            };
+            Label left_paragraph = new Label
+            {
+                Dock = DockStyle.Fill,
+                Height = 200,
+                Font = new Font("Century Gothic", 12),
+                Text = "This is a sample paragraph for the About Us. The quick brown fox jumps over a lazy dog.",
             };
             body_container.Controls.Add(body_layout);
+            body_layout.Controls.Add(left_content_container);
+            left_content_container.Controls.Add(content);
+            content.Controls.Add(left_header);
+            content.Controls.Add(left_paragraph);
 
 
+            //---------------------- RIGHT ----------------------
+            Panel right_content_container = new Panel
+            {
+                Dock = DockStyle.Fill
+            };
 
-            about_main.Controls.Add(body_container);
-            about_main.Controls.Add(headerPanel);
+
+            about_main.Controls.Add(body_container);    //header
+            about_main.Controls.Add(headerPanel);   //body
 
             //----------------------------------------------
 
