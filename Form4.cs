@@ -523,22 +523,25 @@ namespace WinFormsApp1
 
             Label left_header = new Label
             {
-                Height = 50,
-                Text = "Left",
+                Dock = DockStyle.Top,
+                Height = 120,
+                Text = "About Us",
                 Font = new Font("Century Gothic", 20),
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
             Label left_paragraph = new Label
             {
+                Dock = DockStyle.Top,
                 Font = new Font("Century Gothic", 12),
-                Text = "This is a sample paragraph for the About Us. The quick brown fox jumps over a lazy dog.",
+                Text = "The program is created to automate logbook in different division in Barangay Offices across General Santos City. This program is created by Decode Creatives by Jan Geraldez.",
                 AutoSize = true
             };
 
+            left_content_container.Controls.Add(content);
             content.Controls.Add(left_header);
             content.Controls.Add(left_paragraph);
-            left_content_container.Controls.Add(content);
+            
 
             //---------------------- RIGHT ----------------------
             Panel right_content_container = new Panel
@@ -562,9 +565,9 @@ namespace WinFormsApp1
 
             body_container.Controls.Add(body_layout);
 
-            //---------------------- ADD TO MAIN ----------------------
-            about_main.Controls.Add(headerPanel);
+            //---------------------- ADD TO MAIN ----------------------            
             about_main.Controls.Add(body_container);
+            about_main.Controls.Add(headerPanel);
 
             return about_main;
         }
