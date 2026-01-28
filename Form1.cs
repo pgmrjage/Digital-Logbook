@@ -6,16 +6,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
-            this.FormBorderStyle = FormBorderStyle.None;
-
-
-            Panel loginPanelSide = new Panel();
-            loginPanelSide.Name = "user_logsidepanel";
-            loginPanelSide.Width = 250;
-            loginPanelSide.Dock = DockStyle.Left;
-            loginPanelSide.BackColor = Color.FromArgb(30, 30, 30);
-
-            this.Controls.Add(loginPanelSide);
+            
         }
 
         //void callForm4 ()

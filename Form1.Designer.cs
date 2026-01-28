@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PictureBox pictureBox1;
             txtbox_username = new TextBox();
             label1 = new Label();
             btn_login = new Button();
             label2 = new Label();
             txtbox_pass = new TextBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtbox_username
@@ -80,23 +85,46 @@
             txtbox_pass.Size = new Size(157, 23);
             txtbox_pass.TabIndex = 3;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(30, 30, 30);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(300, 319);
+            panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(300, 319);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AllowDrop = true;
             AutoScaleMode = AutoScaleMode.Inherit;
             BackColor = Color.AntiqueWhite;
-            ClientSize = new Size(628, 319);
-            ControlBox = false;
+            ClientSize = new Size(625, 319);
+            Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(txtbox_pass);
             Controls.Add(btn_login);
             Controls.Add(label1);
             Controls.Add(txtbox_username);
+            HelpButton = true;
+            KeyPreview = true;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -108,5 +136,6 @@
         private Button btn_login;
         private Label label2;
         private TextBox txtbox_pass;
+        private Panel panel1;
     }
 }
