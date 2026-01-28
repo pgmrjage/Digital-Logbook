@@ -1,33 +1,35 @@
+using System.Windows.Forms;
+using System;
+using System.Drawing;
+
 namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        private object pictureBox1;
+
         public Form1()
         {
             InitializeComponent();
-
-            
         }
-
-        //void callForm4 ()
-        //{
-        //    Form4 f4 = new Form4();
-        //    f4.Show();
-        //}
-
+        
         private void btn_login_Click(object sender, EventArgs e)
         {
+            
+           
+
             string username = txtbox_username.Text;
             string password = txtbox_pass.Text;
 
-            if (username == "admin" &&  password == "123")  //Admin Sample Account
+            if (username == "admin" && password == "123")  //Admin Sample Account
             {
                 MessageBox.Show("Hello Admin");
                 Form4 f4 = new Form4();
-                f4.Show();                               
+                f4.Show();
 
                 this.Hide();
-            }else if (username == "user" && password == "123")  //User Sample Account
+            }
+            else if (username == "user" && password == "123")  //User Sample Account
             {
                 MessageBox.Show("Login Successfully");
                 Form2 f2 = new Form2();
@@ -39,5 +41,7 @@ namespace WinFormsApp1
 
 
         }
+
+        
     }
 }

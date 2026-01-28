@@ -35,10 +35,22 @@
             label2 = new Label();
             txtbox_pass = new TextBox();
             panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             pictureBox1 = new PictureBox();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.Image = Properties.Resources.Barangay_Mabuhay_Logo;
+            pictureBox1.Location = new Point(323, 73);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(157, 149);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // txtbox_username
             // 
@@ -88,21 +100,19 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(30, 30, 30);
-            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(flowLayoutPanel1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(300, 319);
             panel1.TabIndex = 5;
             // 
-            // pictureBox1
+            // flowLayoutPanel1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(300, 319);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            flowLayoutPanel1.Location = new Point(29, 37);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(200, 100);
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -111,6 +121,7 @@
             BackColor = Color.AntiqueWhite;
             ClientSize = new Size(625, 319);
             Controls.Add(panel1);
+            Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(txtbox_pass);
             Controls.Add(btn_login);
@@ -123,8 +134,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,5 +148,6 @@
         private Label label2;
         private TextBox txtbox_pass;
         private Panel panel1;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
