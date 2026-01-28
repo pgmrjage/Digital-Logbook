@@ -433,9 +433,34 @@ namespace WinFormsApp1
         // =========================
         // Create New Panel
         // =========================
+        private void ClearAll_Function (object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Submit_Function (object sender, EventArgs e)
+        {
+
+        }
+
         private Panel CreateNewPanel()
         {
-            Panel createnew = new Panel()
+            //Button function
+            var clearBtn = new Button
+            {
+                Text = "Clear All",
+                //Dock = DockStyle.Bottom,
+                Height = 30,
+                Location = new Point(40, 310)
+            };
+            var submitBtn = new Button
+            {
+                Text = "Submit",
+                Height = 30,
+                Location = new Point(140, 310)
+            };
+
+            Panel createnew_main = new Panel()
             {
                 BackColor = Color.White,
                 Dock = DockStyle.Fill,
@@ -458,11 +483,106 @@ namespace WinFormsApp1
                 Padding = new Padding(10, 0, 0, 0)
             };
 
+            //-------------------- BODY --------------------
+
+            Panel body_container = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.Bisque,
+                Padding = new Padding(20),
+            };
+
+            createnew_main.Controls.Add(body_container);
+
+            TextBox surname_txtbox = new TextBox
+            {
+                PlaceholderText = "Surname",
+                Location = new Point(40, 30),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(surname_txtbox);
+            TextBox firstname_txtbox = new TextBox
+            {
+                PlaceholderText = "First Name",
+                Location = new Point (40, 60),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(firstname_txtbox);
+            TextBox middleI_txtbox = new TextBox
+            {
+                PlaceholderText = "Middle Initial",
+                Location = new Point(40, 90),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(middleI_txtbox);
+            ComboBox suffix_cb = new ComboBox
+            {
+                Location = new Point(40, 120),
+                Text = "Suffix",
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(suffix_cb);
+            TextBox contact_txtbox = new TextBox
+            {
+                PlaceholderText = "Contact No.",
+                Location = new Point(40, 150),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(contact_txtbox);
+            TextBox address_txtbox = new TextBox
+            {
+                PlaceholderText = "Address",
+                Location = new Point(40, 180),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(address_txtbox);
+            TextBox business_txtbox = new TextBox
+            {
+                PlaceholderText = "Business",
+                Location = new Point(40, 210),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(business_txtbox);
+            TextBox purpose_txtbox = new TextBox
+            {
+                PlaceholderText = "Purpose",
+                Location = new Point(40, 240),
+                Multiline = true,
+                Width = 200,
+                Height = 50,
+            };
+            body_container.Controls.Add(purpose_txtbox);
+
+            Button clear_btn = new Button
+            {
+                Text = "Clear All",
+                Location = new Point(40, 270),
+                Width = 200,
+                Height = 20,
+            };
+            body_container.Controls.Add(clear_btn);
+
 
             headerPanel.Controls.Add(headerLabel);
-            createnew.Controls.Add(headerPanel);
+            createnew_main.Controls.Add(headerPanel);
 
-            return createnew;
+
+            // Buttons
+            clearBtn.Click += ClearAll_Function;
+            submitBtn.Click += Submit_Function; // function not yet declared
+            body_container.Controls.Add(clearBtn);
+            body_container.Controls.Add(submitBtn);
+
+            return createnew_main;
+
+            
 
         }
 
@@ -535,7 +655,8 @@ namespace WinFormsApp1
                 Dock = DockStyle.Top,
                 Font = new Font("Century Gothic", 12),
                 Text = "The program is created to automate logbook in different division in Barangay Offices across General Santos City. This program is created by Decode Creatives by Jan Geraldez.",
-                AutoSize = true
+                AutoSize = true,
+                Padding = new Padding (10,0,10,0)
             };
 
             left_content_container.Controls.Add(content);
