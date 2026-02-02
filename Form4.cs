@@ -97,16 +97,16 @@ namespace WinFormsApp1
             // ------------ DASHBOARD ------------------
             Panel dashboardPanel = Dashboard_Section();
             Panel createnewPanel = CreateNewPanel();
-            Panel aboutPanel = About_Section();
+            Panel summaryPanel = Summary_Section();
 
             // Sidebar button (REVERSE ORDER)
             Button btnLogoout = CreateSidebarButton("Logout");
             //btnLogoout.Click += (s, e) => LoadContent(dashboardPanel);
             panelSidebar.Controls.Add(btnLogoout);
 
-            Button btnAbout = CreateSidebarButton("About Us");
-            btnAbout.Click += (s, e) => LoadContent(aboutPanel);
-            panelSidebar.Controls.Add(btnAbout);
+            Button btnSummary = CreateSidebarButton("Summary");
+            btnSummary.Click += (s, e) => LoadContent(summaryPanel);
+            panelSidebar.Controls.Add(btnSummary);
 
             Button btnCreate = CreateSidebarButton("Create New");
             btnCreate.Click += (s, e) => LoadContent(createnewPanel);
@@ -494,72 +494,36 @@ namespace WinFormsApp1
 
             createnew_main.Controls.Add(body_container);
 
-            TextBox surname_txtbox = new TextBox
+            TextBox CreateTextBox(string placeholder, bool multiline = false)
             {
-                PlaceholderText = "Surname",
-                Location = new Point(40, 30),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(surname_txtbox);
-            TextBox firstname_txtbox = new TextBox
-            {
-                PlaceholderText = "First Name",
-                Location = new Point (40, 60),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(firstname_txtbox);
-            TextBox middleI_txtbox = new TextBox
-            {
-                PlaceholderText = "Middle Initial",
-                Location = new Point(40, 90),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(middleI_txtbox);
-            ComboBox suffix_cb = new ComboBox
-            {
-                Location = new Point(40, 120),
-                Text = "Suffix",
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(suffix_cb);
-            TextBox contact_txtbox = new TextBox
-            {
-                PlaceholderText = "Contact No.",
-                Location = new Point(40, 150),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(contact_txtbox);
-            TextBox address_txtbox = new TextBox
-            {
-                PlaceholderText = "Address",
-                Location = new Point(40, 180),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(address_txtbox);
-            TextBox business_txtbox = new TextBox
-            {
-                PlaceholderText = "Business",
-                Location = new Point(40, 210),
-                Width = 200,
-                Height = 20,
-            };
-            body_container.Controls.Add(business_txtbox);
-            TextBox purpose_txtbox = new TextBox
-            {
-                PlaceholderText = "Purpose",
-                Location = new Point(40, 240),
-                Multiline = true,
-                Width = 200,
-                Height = 50,
-            };
-            body_container.Controls.Add(purpose_txtbox);
+                return new TextBox
+                {
+                    PlaceholderText = placeholder,
+                    Font = new Font("Segoe UI", 10),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Height = multiline ? 70 : 32,
+                    Multiline = multiline,
+                    Dock = DockStyle.Top,
+                    Margin = new Padding(0, 0, 0, 12)
+                };
+            }
 
+            // Inputs                                       
+                        
+            body_container.Controls.Add(CreateTextBox("Purpose", true));
+            body_container.Controls.Add(CreateTextBox("Business"));
+            body_container.Controls.Add(CreateTextBox("Address"));
+            body_container.Controls.Add(CreateTextBox("Contact No."));
+            body_container.Controls.Add(CreateTextBox("Middle Initial"));
+            body_container.Controls.Add(CreateTextBox("First Name"));
+            body_container.Controls.Add(CreateTextBox("Surname"));
+                        
+
+
+
+
+            
+            
             Button clear_btn = new Button
             {
                 Text = "Clear All",
@@ -567,8 +531,6 @@ namespace WinFormsApp1
                 Width = 200,
                 Height = 20,
             };
-            body_container.Controls.Add(clear_btn);
-
 
             headerPanel.Controls.Add(headerLabel);
             createnew_main.Controls.Add(headerPanel);
@@ -588,11 +550,11 @@ namespace WinFormsApp1
 
 
         // =========================
-        // About Us
+        // Summary
         // =========================
-        private Panel About_Section()
+        private Panel Summary_Section()
         {
-            Panel about_main = new Panel
+            Panel summary_main = new Panel
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White,
@@ -608,7 +570,7 @@ namespace WinFormsApp1
 
             Label headerLabel = new Label
             {
-                Text = "About Us",
+                Text = "Summary",
                 Dock = DockStyle.Fill,
                 ForeColor = Color.White,
                 Font = new Font("Century Gothic", 24),
@@ -645,7 +607,7 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Top,
                 Height = 120,
-                Text = "About Us",
+                Text = "Summary",
                 Font = new Font("Century Gothic", 20),
                 TextAlign = ContentAlignment.MiddleCenter
             };
@@ -687,10 +649,10 @@ namespace WinFormsApp1
             body_container.Controls.Add(body_layout);
 
             //---------------------- ADD TO MAIN ----------------------            
-            about_main.Controls.Add(body_container);
-            about_main.Controls.Add(headerPanel);
+            summary_main.Controls.Add(body_container);
+            summary_main.Controls.Add(headerPanel);
 
-            return about_main;
+            return summary_main;
         }
 
         
