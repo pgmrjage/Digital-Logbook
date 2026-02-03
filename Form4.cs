@@ -445,20 +445,7 @@ namespace WinFormsApp1
 
         private Panel CreateNewPanel()
         {
-            //Button function
-            var clearBtn = new Button
-            {
-                Text = "Clear All",
-                //Dock = DockStyle.Bottom,
-                Height = 30,
-                Location = new Point(40, 310)
-            };
-            var submitBtn = new Button
-            {
-                Text = "Submit",
-                Height = 30,
-                Location = new Point(140, 310)
-            };
+            
 
             Panel createnew_main = new Panel()
             {
@@ -494,6 +481,25 @@ namespace WinFormsApp1
 
             createnew_main.Controls.Add(body_container);
 
+            var create_flowlayout = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,                
+            };
+
+            body_container.Controls.Add(create_flowlayout); // -----> Textbox Located
+
+
+            var title = new Label()
+            {
+                Text = "User Input",
+                Width = 160,
+                Height = 30,
+                Font = new Font ("Century Gothic", 18),
+                Margin = new Padding (10,0,0,10),
+            };
+            
             TextBox CreateTextBox(string placeholder, bool multiline = false)
             {
                 return new TextBox
@@ -503,44 +509,66 @@ namespace WinFormsApp1
                     BorderStyle = BorderStyle.FixedSingle,
                     Height = multiline ? 70 : 32,
                     Multiline = multiline,
-                    Dock = DockStyle.Top,
-                    Margin = new Padding(0, 0, 0, 12)
+                    
+                    Margin = new Padding(12, 0, 0, 12),
+                    Width = 400,
                 };
             }
 
             // Inputs                                       
-                        
-            body_container.Controls.Add(CreateTextBox("Purpose", true));
-            body_container.Controls.Add(CreateTextBox("Business"));
-            body_container.Controls.Add(CreateTextBox("Address"));
-            body_container.Controls.Add(CreateTextBox("Contact No."));
-            body_container.Controls.Add(CreateTextBox("Middle Initial"));
-            body_container.Controls.Add(CreateTextBox("First Name"));
-            body_container.Controls.Add(CreateTextBox("Surname"));
-                        
+            create_flowlayout.Controls.Add(title);
+            create_flowlayout.Controls.Add(CreateTextBox("Surname"));
+            create_flowlayout.Controls.Add(CreateTextBox("First Name"));
+            create_flowlayout.Controls.Add(CreateTextBox("Middle Initial"));
+            create_flowlayout.Controls.Add(CreateTextBox("Contact No."));
+            create_flowlayout.Controls.Add(CreateTextBox("Address"));
+            create_flowlayout.Controls.Add(CreateTextBox("Business"));
+            create_flowlayout.Controls.Add(CreateTextBox("Purpose", true));
 
 
 
 
-            
-            
-            Button clear_btn = new Button
-            {
-                Text = "Clear All",
-                Location = new Point(40, 270),
-                Width = 200,
-                Height = 20,
-            };
+                
 
             headerPanel.Controls.Add(headerLabel);
             createnew_main.Controls.Add(headerPanel);
 
 
-            // Buttons
-            clearBtn.Click += ClearAll_Function;
-            submitBtn.Click += Submit_Function; // function not yet declared
-            body_container.Controls.Add(clearBtn);
-            body_container.Controls.Add(submitBtn);
+            // ====================== FOOTER ====================
+
+            var footerPanel = new Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 60,
+                BackColor = Color.FromArgb(30, 30, 30),
+            };
+
+            var footerFlow = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false,
+                Padding = new Padding(10,10,0,0)
+            };
+
+            //Button function
+            var clearBtn = new Button
+            {
+                Text = "Clear All",
+                Height = 30,
+            };
+            var submitBtn = new Button
+            {
+                Text = "Submit",
+                Height = 30,
+            };
+
+
+            body_container.Controls.Add(footerPanel);   // -------> Buttons Located
+
+            footerFlow.Controls.Add(clearBtn);
+            footerFlow.Controls.Add(submitBtn);
+            footerPanel.Controls.Add(footerFlow);            
 
             return createnew_main;
 
