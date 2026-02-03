@@ -493,11 +493,11 @@ namespace WinFormsApp1
 
             var title = new Label()
             {
-                Text = "User Input",
-                Width = 160,
+                Text = "Please Input some details.",
+                Width = 500,
                 Height = 30,
                 Font = new Font ("Century Gothic", 18),
-                Margin = new Padding (10,0,0,10),
+                Margin = new Padding (8,0,0,10),
             };
             
             TextBox CreateTextBox(string placeholder, bool multiline = false)
@@ -507,7 +507,7 @@ namespace WinFormsApp1
                     PlaceholderText = placeholder,
                     Font = new Font("Segoe UI", 10),
                     BorderStyle = BorderStyle.FixedSingle,
-                    Height = multiline ? 70 : 32,
+                    Height = multiline ? 250 : 50,
                     Multiline = multiline,
                     
                     Margin = new Padding(12, 0, 0, 12),
@@ -540,7 +540,8 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Bottom,
                 Height = 60,
-                BackColor = Color.FromArgb(30, 30, 30),
+                //BackColor = Color.FromArgb(30, 30, 30),
+                BackColor = Color.Transparent,
             };
 
             var footerFlow = new FlowLayoutPanel
@@ -548,7 +549,7 @@ namespace WinFormsApp1
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.LeftToRight,
                 WrapContents = false,
-                Padding = new Padding(10,10,0,0)
+                Padding = new Padding(10,10,10,10)
             };
 
             //Button function
@@ -556,11 +557,13 @@ namespace WinFormsApp1
             {
                 Text = "Clear All",
                 Height = 30,
+                Width = 120,
             };
             var submitBtn = new Button
             {
                 Text = "Submit",
                 Height = 30,
+                Width = 120,
             };
 
 
