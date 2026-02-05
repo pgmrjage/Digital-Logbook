@@ -166,265 +166,165 @@ namespace WinFormsApp1
 
 
 
+        private Button CreateButton(string text)
+        {
+            var btn = new Button
+            {
+                Text = text,
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Width = 120,
+                Height = 50,
+                FlatStyle = FlatStyle.Flat
+            };
+
+            btn.FlatAppearance.BorderSize = 0;
+
+            btn.MouseEnter += (s, e) => btn.BackColor = Color.FromArgb(50, 50, 50);
+            btn.MouseLeave += (s, e) => btn.BackColor = Color.FromArgb(30, 30, 30);
+
+            return btn;
+        }
+
+
+
 
         // =========================
         // Dashboard Panel
         // =========================
+
+        private Panel CreatePanel(
+            DockStyle dock = DockStyle.None,
+            int height = 0,
+            int padding = 0,
+            Color? backColor = null)
+                {
+                    return new Panel
+                    {
+                        Dock = dock,
+                        Height = height,
+                        Padding = new Padding(padding),
+                        BackColor = backColor ?? Color.Transparent
+                    };
+                }
+
+
+
         private Panel Dashboard_Section()
         {
-            Panel dashboardPanel = new Panel    //1
+            // ===== ROOT =====
+            var dashboardPanel = new Panel
             {
                 BackColor = Color.White,
-                Dock = DockStyle.Fill,
-                //Padding = new Padding(10),
+                Dock = DockStyle.Fill
             };
 
-            Panel headerPanel = new Panel       //1.1
+            // ===== HEADER =====
+            var headerPanel = new Panel
             {
-                Dock = DockStyle.Top,   
+                Dock = DockStyle.Top,
                 Height = 60,
-                BackColor= Color.DarkBlue,
+                BackColor = Color.DarkBlue
             };
 
-            Label headerLabel = new Label       //1.2
+            var headerLabel = new Label
             {
                 Text = "Dashboard",
-                Dock= DockStyle.Fill,
+                Dock = DockStyle.Fill,
                 ForeColor = Color.White,
                 Font = new Font("Century Gothic", 24),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Padding = new Padding(10, 0, 0, 0)
             };
+            headerPanel.Controls.Add(headerLabel);
 
-            Panel dashmain = new Panel         //2
+            // ===== MAIN =====
+            var dashmain = new Panel
             {
                 Dock = DockStyle.Fill,
-                Padding = new Padding(20, 20, 20, 20),                
-                BackColor = Color.Yellow,
+                Padding = new Padding(20),
+                BackColor = Color.Yellow
             };
 
-            TableLayoutPanel dashmain_layout = new TableLayoutPanel     //2.1
+            var mainLayout = new TableLayoutPanel
             {
                 RowCount = 2,
                 ColumnCount = 1,
                 Dock = DockStyle.Fill,
                 BackColor = Color.Aqua,
-                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
-                //Padding = new Padding (20,20,20,20),
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
             };
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
 
-            // This is the layoutbox for box content including counts and numeric
-            FlowLayoutPanel dashmain_box_layout = new FlowLayoutPanel{
+            // ===== INFO BOXES =====
+            var dashBoxLayout = new FlowLayoutPanel
+            {
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.LeftToRight,
-
+                AutoScroll = true
             };
 
-            // This is the layoutbox for record including searchbox and listbox
-            Panel records_box_layout = new Panel
+            // Example Box 1
+            var box1 = new FlowLayoutPanel
             {
-                Dock = DockStyle.Fill,
-            };
-            
-            dashmain_layout.RowStyles.Clear();
-            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
-            dashmain_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
-
-
-            // First Container Section
-
-            FlowLayoutPanel box = new FlowLayoutPanel
-            {
-                //Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.TopDown,
-                BackColor = Color.FromArgb(30,30,30),
-                Height = 150,
-                Width = 250,
-                Margin = new Padding (20, 20, 20, 20),
-            };
-
-            
-
-            Panel counts_container = new Panel {
-                Dock = DockStyle.Top,
-                AutoSize = true,
-            };
-
-            Panel numeric_container = new Panel
-            {
-                Dock = DockStyle.Top,
-                AutoSize = true,
-            };
-            Panel actionBtn_container = new Panel
-            {
-                Dock = DockStyle.Top,
-                AutoSize = true,
-            };
-
-            
-
-            //Details inside the Box
-            Label counts = new Label
-            {
-                ForeColor = Color.White,
-                AutoSize = true,
-                Font = new Font("Century Gothic", 16),
-                Text = "Counts",
-                TextAlign = ContentAlignment.MiddleCenter,
-            };
-
-            Label numeric = new Label
-            {
-                ForeColor = Color.White,
-                AutoSize = true,
-                Font = new Font("Century Gothic", 48),
-                Text = "240",
-                TextAlign = ContentAlignment.MiddleCenter,
-            };
-
-
-            // Second Container Section
-
-            Panel container = new Panel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding (20, 20, 20, 20),
-            };
-            Panel searchbox_container = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 50,
-            };
-            Panel record_container = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 200,
-            };
-
-
-            TextBox searchbox = new TextBox
-            {
-                Dock = DockStyle.None,
-                Height = 50,
-                PlaceholderText = "Search",
-            };
-
-            ListBox records = new ListBox
-            {
-                Dock = DockStyle.None,
-                Height = 200,
-                Width = 1000
-            };
-
-
-            // ------ DASH FOOTER --------
-
-            TableLayoutPanel footer = new TableLayoutPanel
-            {
-                Dock = DockStyle.Bottom,
-                BackColor = Color.Green,
-               
-            };
-
-            Panel footer_container = new Panel
-            {
-                Dock = DockStyle.Fill,
-                
-            };
-
-            FlowLayoutPanel buttons_container = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.LeftToRight,
-                Padding = new Padding(20, 20, 20, 20),
-                WrapContents = false,
-            };
-
-            Button delete_button = new Button
-            {
-                Text = "Delete",
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30,30,30),
-                Height = 50,
-                Width = 120,
-            };
-            Button edit_button = new Button
-            {
-                Text = "Edit",
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30,30,30),
-                Height = 50,
-                Width = 120,
-            };
-            Button saveAs_button = new Button
-            {
-                Text = "Save As",
-                ForeColor = Color.White,
                 BackColor = Color.FromArgb(30, 30, 30),
-                Height = 50,
-                Width = 120,
+                Width = 250,
+                Height = 150,
+                Margin = new Padding(20)
             };
+            box1.Controls.Add(new Label { Text = "Counts", ForeColor = Color.White, Font = new Font("Century Gothic", 16), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
+            box1.Controls.Add(new Label { Text = "240", ForeColor = Color.White, Font = new Font("Century Gothic", 48), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
 
-
-
-            // Add some test content to see if it's working
-            Label testLabel = new Label
+            // Example Box 2
+            var box2 = new FlowLayoutPanel
             {
-                Dock = DockStyle.Fill,
-                Text = "This is the dashboard content",
-                Font = new Font("Segoe UI", 12),
-                TextAlign = ContentAlignment.MiddleCenter,
-                AutoSize = true,
-                //Location = new Point(50, 80),
-                //AutoSize = true
+                FlowDirection = FlowDirection.TopDown,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Width = 250,
+                Height = 150,
+                Margin = new Padding(20)
             };
+            box2.Controls.Add(new Label { Text = "Users", ForeColor = Color.White, Font = new Font("Century Gothic", 16), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
+            box2.Controls.Add(new Label { Text = "120", ForeColor = Color.White, Font = new Font("Century Gothic", 48), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
 
+            dashBoxLayout.Controls.Add(box1);
+            dashBoxLayout.Controls.Add(box2);
 
+            mainLayout.Controls.Add(dashBoxLayout, 0, 0);
 
+            // ===== RECORDS =====
+            var recordsPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20) };
+            var searchPanel = new Panel { Dock = DockStyle.Top, Height = 50 };
+            var recordPanel = new Panel { Dock = DockStyle.Fill };
 
+            var searchBox = new TextBox { PlaceholderText = "Search", Dock = DockStyle.Left, Width = 300 };
+            var filterCombo = new ComboBox { Dock = DockStyle.Left, Width = 120 };
+            var recordsList = new ListBox { Dock = DockStyle.Fill };
 
+            searchPanel.Controls.Add(filterCombo);
+            searchPanel.Controls.Add(searchBox);
+            recordPanel.Controls.Add(recordsList);
 
-            // Add controls in correct order
+            // Add search first, then records
+            recordsPanel.Controls.Add(searchPanel);
+            recordsPanel.Controls.Add(recordPanel);
 
+            mainLayout.Controls.Add(recordsPanel, 0, 1);
+            dashmain.Controls.Add(mainLayout);
 
-            //2
-            dashboardPanel.Controls.Add(dashmain);
-            dashmain.Controls.Add(dashmain_layout);
-            dashmain_layout.Controls.Add(dashmain_box_layout, 0,0);
-            dashmain_box_layout.Controls.Add(box);
-            box.Controls.Add(counts_container);
-            box.Controls.Add(numeric_container);
-            counts_container.Controls.Add(counts);
-            numeric_container.Controls.Add(numeric);
+            // ===== FOOTER =====
+            var footer = new Panel { Dock = DockStyle.Bottom, BackColor = Color.Green, Height = 70 };
+            var buttonLayout = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(10), WrapContents = false, AutoSize = true };
+            string[] btnNames = { "Edit", "Delete", "Save As" };
+            foreach (var n in btnNames) buttonLayout.Controls.Add(CreateButton(n));
+            footer.Controls.Add(buttonLayout);
 
-            //Function call for Records
-
-            //dashboardPanel.Controls.Add(dashmain);
-            //dashmain.Controls.Add(dashmain_layout);
-            dashmain_layout.Controls.Add(records_box_layout, 0, 1); 
-            records_box_layout.Controls.Add(container);
-            container.Controls.Add(record_container);
-            container.Controls.Add(searchbox_container);            
-            searchbox_container.Controls.Add(searchbox);
-            record_container.Controls.Add(records);
-
-            //box.Controls.Add(box_content);
-            //dashmain.Controls.Add(dashmain_layout);
-            //dashboardPanel.Controls.Add(dashmain);  //show in dashboard
-
-
-            //1
-            headerPanel.Controls.Add(headerLabel);
-            dashboardPanel.Controls.Add(headerPanel); //show in dashboard
-
-            //3 - footer
-            dashboardPanel.Controls.Add(footer);
-            footer.Controls.Add(footer_container);
-            footer_container .Controls.Add(buttons_container);
-            buttons_container.Controls.Add(delete_button);
-            buttons_container.Controls.Add(edit_button);
-            buttons_container.Controls.Add(saveAs_button);
-
+            // ===== ASSEMBLE DASHBOARD =====
+            dashboardPanel.Controls.Add(dashmain);      // ✅ Add main panel
+            dashboardPanel.Controls.Add(headerPanel);   // ✅ Add header
+            dashboardPanel.Controls.Add(footer);        // ✅ Add footer
 
             return dashboardPanel;
         }
