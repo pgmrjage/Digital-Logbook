@@ -197,24 +197,7 @@ namespace WinFormsApp1
         // =========================
         // Dashboard Panel
         // =========================
-
-        private Panel CreatePanel(
-            DockStyle dock = DockStyle.None,
-            int height = 0,
-            int padding = 0,
-            Color? backColor = null)
-                {
-                    return new Panel
-                    {
-                        Dock = dock,
-                        Height = height,
-                        Padding = new Padding(padding),
-                        BackColor = backColor ?? Color.Transparent
-                    };
-                }
-
-
-
+                
         private Panel Dashboard_Section()
         {
             // ===== ROOT =====
@@ -229,15 +212,16 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Top,
                 Height = 60,
-                BackColor = Color.DarkBlue
+                BackColor = Color.White
+                
             };
 
             var headerLabel = new Label
             {
                 Text = "Dashboard",
                 Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Century Gothic", 24),
+                ForeColor = Color.FromArgb(30,30,30),
+                Font = new Font("Cascadia Code", 24, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Padding = new Padding(10, 0, 0, 0)
             };
@@ -248,7 +232,7 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Fill,
                 Padding = new Padding(20),
-                BackColor = Color.Yellow
+                //BackColor = Color.Yellow
             };
 
             var mainLayout = new TableLayoutPanel
@@ -256,8 +240,8 @@ namespace WinFormsApp1
                 RowCount = 2,
                 ColumnCount = 1,
                 Dock = DockStyle.Fill,
-                BackColor = Color.Aqua,
-                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+                BackColor = Color.FromArgb(240,240,240),
+                //CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
             };
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
@@ -277,7 +261,7 @@ namespace WinFormsApp1
                 BackColor = Color.FromArgb(30, 30, 30),
                 Width = 250,
                 Height = 150,
-                Margin = new Padding(20)
+                Margin = new Padding(10)
             };
             box1.Controls.Add(new Label { Text = "Counts", ForeColor = Color.White, Font = new Font("Century Gothic", 16), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
             box1.Controls.Add(new Label { Text = "240", ForeColor = Color.White, Font = new Font("Century Gothic", 48), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
@@ -289,7 +273,7 @@ namespace WinFormsApp1
                 BackColor = Color.FromArgb(30, 30, 30),
                 Width = 250,
                 Height = 150,
-                Margin = new Padding(20)
+                Margin = new Padding(10)
             };
             box2.Controls.Add(new Label { Text = "Users", ForeColor = Color.White, Font = new Font("Century Gothic", 16), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
             box2.Controls.Add(new Label { Text = "120", ForeColor = Color.White, Font = new Font("Century Gothic", 48), AutoSize = true, TextAlign = ContentAlignment.MiddleCenter });
@@ -304,8 +288,8 @@ namespace WinFormsApp1
             var searchPanel = new Panel { Dock = DockStyle.Top, Height = 50 };
             var recordPanel = new Panel { Dock = DockStyle.Fill };
 
-            var searchBox = new TextBox { PlaceholderText = "Search", Dock = DockStyle.Left, Width = 300 };
-            var filterCombo = new ComboBox { Dock = DockStyle.Left, Width = 120 };
+            var searchBox = new TextBox { PlaceholderText = "Search", Dock = DockStyle.Left, Width = 200 };
+            var filterCombo = new ComboBox { Dock = DockStyle.Left, Width = 120,};
             var recordsList = new ListBox { Dock = DockStyle.Fill };
 
             searchPanel.Controls.Add(filterCombo);
@@ -320,7 +304,7 @@ namespace WinFormsApp1
             dashmain.Controls.Add(mainLayout);
 
             // ===== FOOTER =====
-            var footer = new Panel { Dock = DockStyle.Bottom, BackColor = Color.Green, Height = 70 };
+            var footer = new Panel { Dock = DockStyle.Bottom,  Height = 70 };
             var buttonLayout = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(10), WrapContents = false, AutoSize = true };
             string[] btnNames = { "Edit", "Delete", "Save As" };
             foreach (var n in btnNames) buttonLayout.Controls.Add(CreateButton(n));
