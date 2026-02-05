@@ -25,6 +25,11 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             InitializeLayout();
+
+            // Default when Logging In
+            Panel dashboard = Dashboard_Section();
+            LoadContent(dashboard);
+
         }
 
         private void InitializeLayout()
