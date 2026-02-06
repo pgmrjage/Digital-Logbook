@@ -346,15 +346,15 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Top,
                 Height = 60,
-                BackColor = Color.DarkBlue,
+                //BackColor = Color.DarkBlue,
             };
 
             Label headerLabel = new Label
             {
                 Text = "Create New",
                 Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Century Gothic", 24),
+                ForeColor = Color.FromArgb(30,30,30),
+                Font = new Font("Cascadia Code", 24, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Padding = new Padding(10, 0, 0, 0)
             };
@@ -364,7 +364,7 @@ namespace WinFormsApp1
             Panel body_container = new Panel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Bisque,
+                //BackColor = Color.Bisque,
                 Padding = new Padding(20),
             };
 
@@ -469,23 +469,25 @@ namespace WinFormsApp1
         }
 
 
+
         // =========================
-        // Summary
+        // Summary Section (Admin)
         // =========================
         private Panel Summary_Section()
         {
-            Panel summary_main = new Panel
+            // ================= MAIN CONTAINER =================
+            Panel summaryMain = new Panel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.White,
+                BackColor = Color.White
             };
 
-            //-------------------- HEADER --------------------
+            // ================= HEADER =================
             Panel headerPanel = new Panel
             {
                 Dock = DockStyle.Top,
                 Height = 60,
-                BackColor = Color.DarkBlue,
+                BackColor = Color.DarkBlue
             };
 
             Label headerLabel = new Label
@@ -493,92 +495,149 @@ namespace WinFormsApp1
                 Text = "Summary",
                 Dock = DockStyle.Fill,
                 ForeColor = Color.White,
-                Font = new Font("Century Gothic", 24),
+                Font = new Font("Century Gothic", 22, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(10, 0, 0, 0)
+                Padding = new Padding(15, 0, 0, 0)
             };
 
             headerPanel.Controls.Add(headerLabel);
 
-            //-------------------- BODY --------------------
-
-            Panel body_container = new Panel
+            // ================= BODY =================
+            Panel bodyPanel = new Panel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Bisque,
                 Padding = new Padding(20),
+                BackColor = Color.WhiteSmoke
             };
 
-            //---------------------- LEFT ----------------------
-            Panel left_content_container = new Panel
+            // ================= BODY LAYOUT =================
+            TableLayoutPanel bodyLayout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Chartreuse,
+                ColumnCount = 2
             };
+            bodyLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            bodyLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
 
-            FlowLayoutPanel content = new FlowLayoutPanel
-            {
-                FlowDirection = FlowDirection.TopDown,
-                Dock = DockStyle.Fill,
-                WrapContents = false
-            };
+            // ================= LEFT : INFO =================
+            Panel leftPanel = new Panel { Dock = DockStyle.Fill };
 
-            Label left_header = new Label
+            Label infoHeader = new Label
             {
+                Text = "System Overview",
                 Dock = DockStyle.Top,
-                Height = 120,
-                Text = "Summary",
-                Font = new Font("Century Gothic", 20),
+                Height = 50,
+                Font = new Font("Century Gothic", 18, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            Label left_paragraph = new Label
+            Label infoText = new Label
             {
+                Text = "This system automates walk-in logbook records across \n Barangay Offices in General Santos City.\n\nDeveloped by Decode Creatives.",
                 Dock = DockStyle.Top,
                 Font = new Font("Century Gothic", 12),
-                Text = "The program is created to automate logbook in different division in Barangay Offices across General Santos City. This program is created by Decode Creatives by Jan Geraldez.",
-                AutoSize = true,
-                Padding = new Padding (10,0,10,0)
+                Padding = new Padding(10),
+                AutoSize = true
             };
 
-            left_content_container.Controls.Add(content);
-            content.Controls.Add(left_header);
-            content.Controls.Add(left_paragraph);
-            
+            leftPanel.Controls.Add(infoText);
+            leftPanel.Controls.Add(infoHeader);
 
-            //---------------------- RIGHT ----------------------
-            Panel right_content_container = new Panel
+            // ================= RIGHT : SUMMARY PANEL =================
+            Panel rightPanel = new Panel
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.LightGray
+                BackColor = Color.White
             };
 
-            //---------------------- BODY LAYOUT ----------------------
-            TableLayoutPanel body_layout = new TableLayoutPanel
+            FlowLayoutPanel summaryFlow = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                ColumnCount = 2,
-                BackColor = Color.Red
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                Padding = new Padding(10)
             };
-            body_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            body_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
 
-            body_layout.Controls.Add(left_content_container, 0, 0);
-            body_layout.Controls.Add(right_content_container, 1, 0);
+            // ---------- FILTERS ----------
+            ComboBox cmbDepartment = new ComboBox
+            {
+                Width = 250,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            cmbDepartment.Items.AddRange(new string[]
+            {
+        "All Departments",
+        "Barangay Clearance",
+        "Health Office",
+        "Treasury",
+        "Admin"
+            });
+            cmbDepartment.SelectedIndex = 0;
 
-            body_container.Controls.Add(body_layout);
+            DateTimePicker dtpDate = new DateTimePicker
+            {
+                Width = 250,
+                Format = DateTimePickerFormat.Custom,
+                CustomFormat = "MMMM yyyy",
+                ShowUpDown = true
+            };
 
-            //---------------------- ADD TO MAIN ----------------------            
-            summary_main.Controls.Add(body_container);
-            summary_main.Controls.Add(headerPanel);
+            // ---------- SUMMARY LABELS ----------
+            Label lblMonthlyTotal = CreateSummaryLabel("Total Entries (Monthly): 0");
+            Label lblYearlyTotal = CreateSummaryLabel("Total Entries (Yearly): 0");
 
-            return summary_main;
+            // ---------- ADD TO FLOW ----------
+            summaryFlow.Controls.Add(CreateSectionLabel("Filters"));
+            summaryFlow.Controls.Add(cmbDepartment);
+            summaryFlow.Controls.Add(dtpDate);
+
+            summaryFlow.Controls.Add(CreateSectionLabel("Statistics"));
+            summaryFlow.Controls.Add(lblMonthlyTotal);
+            summaryFlow.Controls.Add(lblYearlyTotal);
+
+            rightPanel.Controls.Add(summaryFlow);
+
+            // ================= ADD TO LAYOUT =================
+            bodyLayout.Controls.Add(leftPanel, 0, 0);
+            bodyLayout.Controls.Add(rightPanel, 1, 0);
+
+            bodyPanel.Controls.Add(bodyLayout);
+
+            // ================= ADD TO MAIN =================
+            summaryMain.Controls.Add(bodyPanel);
+            summaryMain.Controls.Add(headerPanel);
+
+            return summaryMain;
         }
 
-        
+        // ================= HELPER METHODS =================
+        private Label CreateSectionLabel(string text)
+        {
+            return new Label
+            {
+                Text = text,
+                Font = new Font("Century Gothic", 14, FontStyle.Bold),
+                AutoSize = true,
+                Margin = new Padding(0, 15, 0, 5)
+            };
+        }
+
+        private Label CreateSummaryLabel(string text)
+        {
+            return new Label
+            {
+                Text = text,
+                Font = new Font("Century Gothic", 12),
+                AutoSize = true,
+                Padding = new Padding(5)
+            };
+        }
 
 
-        
+
+
+
+
 
 
 
