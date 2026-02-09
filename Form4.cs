@@ -105,9 +105,9 @@ namespace WinFormsApp1
             Panel summaryPanel = Summary_Section();
 
             // Sidebar button (REVERSE ORDER)
-            Button btnLogoout = CreateSidebarButton("Logout");
-            //btnLogoout.Click += (s, e) => LoadContent(dashboardPanel);
-            panelSidebar.Controls.Add(btnLogoout);
+            Button btnLogout = CreateSidebarButton("Logout");
+            btnLogout.Click += Logout_Section;
+            panelSidebar.Controls.Add(btnLogout);
 
             Button btnSummary = CreateSidebarButton("Summary");
             btnSummary.Click += (s, e) => LoadContent(summaryPanel);
@@ -283,22 +283,41 @@ namespace WinFormsApp1
 
             mainLayout.Controls.Add(dashBoxLayout, 0, 0);
 
+
+
             // ===== RECORDS =====
             var recordsPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20) };
-            var searchPanel = new Panel { Dock = DockStyle.Top, Height = 50 };
+
+            var searchPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                Height = 50,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false
+            };
+
             var recordPanel = new Panel { Dock = DockStyle.Fill };
 
-            var searchBox = new TextBox { PlaceholderText = "Search", Dock = DockStyle.Left, Width = 200 };
-            var filterCombo = new ComboBox { Dock = DockStyle.Left, Width = 120,};
+            var searchBox = new TextBox
+            {
+                PlaceholderText = "Search",
+                Width = 200,
+            };
+
+            var filterCombo = new ComboBox
+            {
+                Width = 120,
+            };
+
             var recordsList = new ListBox { Dock = DockStyle.Fill };
 
-            searchPanel.Controls.Add(filterCombo);
             searchPanel.Controls.Add(searchBox);
-            recordPanel.Controls.Add(recordsList);
+            searchPanel.Controls.Add(filterCombo);
 
-            // Add search first, then records
-            recordsPanel.Controls.Add(searchPanel);
+            recordPanel.Controls.Add(recordsList);
             recordsPanel.Controls.Add(recordPanel);
+            recordsPanel.Controls.Add(searchPanel);
+
 
             mainLayout.Controls.Add(recordsPanel, 0, 1);
             dashmain.Controls.Add(mainLayout);
@@ -566,11 +585,11 @@ namespace WinFormsApp1
             };
             cmbDepartment.Items.AddRange(new string[]
             {
-        "All Departments",
-        "Barangay Clearance",
-        "Health Office",
-        "Treasury",
-        "Admin"
+                "All Departments",
+                "Barangay Clearance",
+                "Health Office",
+                "Treasury",
+                "Admin"
             });
             cmbDepartment.SelectedIndex = 0;
 
@@ -648,7 +667,7 @@ namespace WinFormsApp1
             f1.Show();
         }
 
-        private void btn_logout_Click(object sender, EventArgs e)
+        private void Logout_Section(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
                 "Are you sure you want to logout?",
@@ -666,8 +685,12 @@ namespace WinFormsApp1
 
         }
 
-        
 
+
+
+        // ===================================
+        //         LOGOUT SECTION
+        // ===================================
 
     }
 }
