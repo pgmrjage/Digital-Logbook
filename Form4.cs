@@ -506,17 +506,17 @@ namespace WinFormsApp1
             {
                 Dock = DockStyle.Top,
                 Height = 60,
-                BackColor = Color.DarkBlue
+                //BackColor = Color.DarkBlue
             };
 
             Label headerLabel = new Label
             {
                 Text = "Summary",
                 Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Century Gothic", 22, FontStyle.Bold),
+                ForeColor = Color.FromArgb(30, 30, 30),
+                Font = new Font("Cascadia Code", 24, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(15, 0, 0, 0)
+                Padding = new Padding(10, 0, 0, 0)
             };
 
             headerPanel.Controls.Add(headerLabel);
@@ -659,7 +659,9 @@ namespace WinFormsApp1
 
 
 
-
+        // ===================================
+        //         LOGOUT SECTION
+        // ===================================
 
         private void load_form1()
         {
@@ -688,9 +690,7 @@ namespace WinFormsApp1
 
 
 
-        // ===================================
-        //         LOGOUT SECTION
-        // ===================================
+        
 
     }
 }
