@@ -1,12 +1,21 @@
 using System.Windows.Forms;
 using System;
 using System.Drawing;
+using MySql.Data.MySqlClient;
+using MySqlConnector;
+using System.Runtime.InteropServices.Marshalling;
+using System.IO;
+using Npgsql;
 
 namespace WinFormsApp1
 {
 
     public partial class Form1 : Form
     {
+
+        private string connectionString = "Host=localhost;Port=5432;Database=database;Username=postgre;Password=@testing";
+
+
         private object pictureBox1;
 
         public Form1()
@@ -15,16 +24,13 @@ namespace WinFormsApp1
         }
                 
         private void btn_login_Click(object sender, EventArgs e)
-        {
-            
-           
+        {                      
+            string username = txtbox_username.Text.Trim();
+            string password = txtbox_pass.Text.Trim();
 
-            string username = txtbox_username.Text;
-            string password = txtbox_pass.Text;
-
-            if (username == "admin" && password == "123")  //Admin Sample Account
+            if (validateUser(username, password))  //Admin Sample Account
             {
-                MessageBox.Show("Hello Admin");
+                MessageBox.Show("Login Successfully");
                 Form4 f4 = new Form4();
                 f4.Show();
 
@@ -43,6 +49,32 @@ namespace WinFormsApp1
 
         }
 
-        
+        private bool validateUser(string username, string pass)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string Query = "SELECT COUNT(*) FROM account WHERE username=@username AND password=@pass";
+
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.Parameters.AddWithValue("u", username);
+                        cmd.Parameters.AddWithValue("p", pass);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Error: " + ex.Message);
+                return false;                
+            }
+        }
     }
 }
