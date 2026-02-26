@@ -13,7 +13,7 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
 
-        private string connectionString = "Host=localhost;Port=5432;Database=database;Username=postgre;Password=@testing";
+        private string connectionString = "Host=localhost;Port=5432;Database=account;Username=postgre;Password=@ninjacsx1";
 
 
         private object pictureBox1;
@@ -25,8 +25,8 @@ namespace WinFormsApp1
                 
         private void btn_login_Click(object sender, EventArgs e)
         {                      
-            string username = txtbox_username.Text.Trim();
-            string password = txtbox_pass.Text.Trim();
+            string username = txtbox_username.Text;
+            string password = txtbox_pass.Text;
 
             if (validateUser(username, password))  //Admin Sample Account
             {
@@ -36,14 +36,7 @@ namespace WinFormsApp1
 
                 this.Hide();
             }
-            else if (username == "user" && password == "123")  //User Sample Account
-            {
-                MessageBox.Show("Login Successfully");
-                Form2 f2 = new Form2();
-                f2.Show();
-
-                this.Hide();    //hides the login
-            }
+            
             else { MessageBox.Show("Invalid Credentials, Please Try Again"); }
 
 
@@ -53,19 +46,22 @@ namespace WinFormsApp1
         {
             try
             {
+                // Make sure connectionString points to your PostgreSQL server
                 using (var conn = new NpgsqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    string Query = "SELECT COUNT(*) FROM account WHERE username=@username AND password=@pass";
+                    // Correct table and column names
+                    string query = "SELECT COUNT(*) FROM account WHERE username=@username AND pass=@pass";
 
-                    using (var cmd = conn.CreateCommand())
+                    using (var cmd = new NpgsqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("u", username);
-                        cmd.Parameters.AddWithValue("p", pass);
+                        // Add parameters matching the placeholders in the query
+                        cmd.Parameters.AddWithValue("username", username);
+                        cmd.Parameters.AddWithValue("pass", pass);
 
+                        // Execute the query and check if at least one row matches
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
-
                         return count > 0;
                     }
                 }
@@ -73,7 +69,7 @@ namespace WinFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show("Database Error: " + ex.Message);
-                return false;                
+                return false;
             }
         }
     }
