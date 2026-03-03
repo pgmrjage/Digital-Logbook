@@ -13,7 +13,7 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
 
-        private string connectionString = "Host=localhost;Port=5432;Database=account;Username=postgre;Password=@ninjacsx1";
+        private string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=@ninjacsx1";
 
 
         private object pictureBox1;
