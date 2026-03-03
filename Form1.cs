@@ -15,9 +15,6 @@ namespace WinFormsApp1
 
         private string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=@ninjacsx1";
 
-
-        private object pictureBox1;
-
         public Form1()
         {
             InitializeComponent();
@@ -28,21 +25,29 @@ namespace WinFormsApp1
             string username = txtbox_username.Text;
             string password = txtbox_pass.Text;
 
-            if (validateUser(username, password))  //Admin Sample Account
+            string role = validateUser(username, password);
+
+            if (role == "admin")
             {
-                MessageBox.Show("Login Successfully");
+                MessageBox.Show("Admin Login Successfully");
                 Form4 f4 = new Form4();
                 f4.Show();
-
                 this.Hide();
             }
+            else if (role == "client")
+            {
+                MessageBox.Show("User Login Successfully");
+                Form2 f2 = new Form2();
+                f2.Show();
+                this.Hide();
+            }
+            else
+                MessageBox.Show("Invalid Credentials, Please Try Again");
+
             
-            else { MessageBox.Show("Invalid Credentials, Please Try Again"); }
-
-
         }
 
-        private bool validateUser(string username, string pass)
+        private string validateUser(string username, string pass)
         {
             try
             {
@@ -52,7 +57,7 @@ namespace WinFormsApp1
                     conn.Open();
 
                     // Correct table and column names
-                    string query = "SELECT COUNT(*) FROM account WHERE username=@username AND pass=@pass";
+                    string query = "SELECT role FROM account WHERE username=@username AND pass=@pass";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
@@ -60,16 +65,20 @@ namespace WinFormsApp1
                         cmd.Parameters.AddWithValue("username", username);
                         cmd.Parameters.AddWithValue("pass", pass);
 
-                        // Execute the query and check if at least one row matches
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0;
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                            return result.ToString();
+                        else
+                            return null;
+
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Database Error: " + ex.Message);
-                return false;
+                return null;
             }
         }
     }
