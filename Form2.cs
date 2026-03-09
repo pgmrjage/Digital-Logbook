@@ -2,11 +2,23 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace WinFormsApp1
 {
     public partial class Form2 : Form
     {
+
+        //INITIALIZE SERVER
+        public class Database()
+        {
+            private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=yourpassword;Database=yourdb";
+            public NpgsqlConnection GetConnection()
+            {
+                return new NpgsqlConnection(connectionString);
+            }
+        }
+
         Panel panelMain = new Panel();
 
         public Form2()
